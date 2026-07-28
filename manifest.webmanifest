@@ -1,7 +1,7 @@
 {
   "name": "WINSTAR 官方選刀系統",
   "short_name": "WINSTAR 選刀",
-  "description": "萬事達五大產品入口與整體式銑刀官方資料選刀",
+  "description": "萬事達五大刀具類別官方資料篩選系統",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
