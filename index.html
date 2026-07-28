@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WINSTAR 官方選刀系統 V2.6 免安裝版</title>
+  <style>
+:root{--bg:#f4f6f8;--panel:#fff;--ink:#17212b;--muted:#66717d;--line:#dfe4e8;--blue:#075aaa;--blue2:#0d6fc8;--cyan:#eaf5ff;--green:#117a53;--amber:#9b5c00;--red:#ad2e2e;--shadow:0 10px 30px rgba(23,33,43,.08);font-family:"Segoe UI","Microsoft JhengHei",sans-serif;color:var(--ink);background:var(--bg)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#eef5fb 0,#f4f6f8 260px);min-height:100vh}.topbar{max-width:1500px;margin:0 auto;padding:30px 34px 20px;display:flex;justify-content:space-between;gap:30px;align-items:flex-start}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}h1{font-size:31px;margin:5px 0 7px;letter-spacing:-.03em}h1 span{font-size:16px;color:var(--blue);vertical-align:middle}h2{font-size:19px;margin:0}.topbar p{margin:0;color:var(--muted)}.header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}.data-status{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.04)}.layout{max-width:1500px;margin:0 auto;padding:0 34px 35px;display:grid;grid-template-columns:430px 1fr;gap:22px}.panel{background:var(--panel);border:1px solid rgba(208,217,224,.95);border-radius:16px;box-shadow:var(--shadow)}.filters{padding:22px;position:sticky;top:12px;align-self:start;max-height:calc(100vh - 24px);overflow:auto}.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.section-title>div{display:flex;align-items:center;gap:10px}.section-title.compact{margin-bottom:12px}.step{display:inline-grid;place-items:center;width:31px;height:31px;border-radius:9px;background:var(--blue);color:#fff;font-size:12px;font-weight:800}.text-btn{border:0;background:none;color:var(--blue);font-weight:700;cursor:pointer}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:700}.field label b{color:var(--red);font-size:11px}.field label small{font-weight:500;color:var(--muted);margin-left:4px}.field input,.field select{width:100%;border:1px solid #cfd7de;border-radius:9px;background:#fff;padding:10px 11px;font:inherit;font-size:14px;color:var(--ink);outline:none}.field input:focus,.field select:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(13,111,200,.12)}.field.emphasized{background:var(--cyan);padding:9px;border-radius:11px}.brand-lock{display:flex;align-items:center;justify-content:space-between;border:1px solid #bed8ef;background:#f0f8ff;border-radius:10px;padding:11px 12px;margin-bottom:13px}.brand-lock span{font-size:11px;font-weight:700;color:var(--blue);background:#fff;padding:4px 7px;border-radius:20px}.check-row{display:flex;gap:10px;margin:17px 0 14px;padding:12px;background:#f8fafb;border:1px solid var(--line);border-radius:10px;cursor:pointer}.check-row input{margin-top:2px}.check-row span{display:flex;flex-direction:column;font-size:13px}.check-row small{color:var(--muted);font-size:11px;margin-top:3px;line-height:1.45}.btn{border:0;border-radius:9px;padding:10px 15px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;transition:.18s}.btn:hover{transform:translateY(-1px)}.btn.primary{background:var(--blue);color:#fff}.btn.secondary{background:#fff;color:var(--blue);border:1px solid #b8cee1}.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}.btn.danger:hover{color:var(--red);border-color:#e0b2b2}.search-btn{width:100%;font-size:15px;padding:13px}.footnote{font-size:11px;color:var(--muted);line-height:1.55;margin:10px 2px 0}.content{min-width:0}.summary{padding:20px 22px;margin-bottom:16px}.empty-summary{color:var(--muted);padding:12px 0}.summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.summary-item{background:#f7f9fb;border-radius:10px;padding:11px}.summary-item b{display:block;font-size:18px}.summary-item span{font-size:11px;color:var(--muted)}.results{display:flex;flex-direction:column;gap:13px}.result-card{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 6px 22px rgba(23,33,43,.055);overflow:hidden}.result-head{display:flex;justify-content:space-between;gap:18px;padding:18px 20px 14px;border-bottom:1px solid #edf0f2}.rank{width:30px;height:30px;border-radius:8px;background:#e7f2fb;color:var(--blue);font-weight:900;display:grid;place-items:center;flex:0 0 auto}.result-title-wrap{display:flex;gap:12px;min-width:0}.result-title{min-width:0}.result-title h3{margin:0;font-size:19px;letter-spacing:.01em}.result-title p{margin:4px 0 0;color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.badge{font-size:11px;padding:4px 7px;border-radius:20px;background:#eef1f4;color:#4d5963;font-weight:700}.badge.official{background:#e8f5ef;color:var(--green)}.badge.new{background:#fff1d7;color:var(--amber)}.result-actions{display:flex;align-items:flex-start}.pdf-btn{text-decoration:none;color:#fff;background:var(--blue);font-size:12px;font-weight:800;border-radius:8px;padding:9px 11px;white-space:nowrap}.result-body{padding:15px 20px 18px}.spec-grid{display:grid;grid-template-columns:repeat(6,minmax(82px,1fr));gap:8px;margin-bottom:14px}.spec{background:#f7f9fa;border-radius:9px;padding:9px}.spec span{display:block;color:var(--muted);font-size:10px}.spec strong{font-size:14px}.condition-grid{display:grid;grid-template-columns:1.1fr 1.4fr;gap:12px}.condition-box{border:1px solid var(--line);border-radius:11px;padding:12px}.condition-box h4{font-size:13px;margin:0 0 9px}.condition-row{display:grid;grid-template-columns:80px 1fr;gap:8px;padding:5px 0;border-bottom:1px dashed #e6eaed;font-size:12px}.condition-row:last-child{border-bottom:0}.condition-row span{color:var(--muted)}.condition-row strong{font-weight:750}.machining{background:#f2f8fd;border-color:#c9dfef}.machining .hero-values{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.hero-value{background:#fff;border-radius:9px;padding:10px}.hero-value span{font-size:10px;color:var(--muted);display:block}.hero-value strong{font-size:20px;color:var(--blue)}.hero-value small{font-size:10px;color:var(--muted)}.source-line{font-size:11px;color:var(--muted);margin-top:11px;display:flex;gap:10px;flex-wrap:wrap}.no-results{background:#fff;border:1px dashed #bcc7cf;border-radius:14px;padding:42px;text-align:center;color:var(--muted)}dialog{border:0;border-radius:16px;padding:0;width:min(700px,92vw);box-shadow:0 25px 80px rgba(0,0,0,.25)}dialog::backdrop{background:rgba(20,30,40,.45)}.dialog-head{display:flex;justify-content:space-between;padding:22px 24px 14px}.icon-btn{border:0;background:#eef1f3;width:32px;height:32px;border-radius:50%;font-size:22px;cursor:pointer}.progress-track{height:7px;background:#e7edf1;margin:0 24px;border-radius:10px;overflow:hidden}.progress-track div{height:100%;width:0;background:var(--blue);transition:width .25s}.update-message{font-weight:750;padding:17px 24px 8px}.update-log{margin:0 24px;background:#101820;color:#c9d4dc;border-radius:10px;min-height:190px;max-height:330px;overflow:auto;padding:12px;font:12px/1.55 Consolas,monospace;white-space:pre-wrap}.dialog-actions{display:flex;justify-content:flex-end;padding:15px 24px 20px}@media(max-width:1050px){.layout{grid-template-columns:1fr}.filters{position:static;max-height:none}.topbar{flex-direction:column}.header-actions{justify-content:flex-start}.spec-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.topbar,.layout{padding-left:15px;padding-right:15px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.condition-grid{grid-template-columns:1fr}.spec-grid{grid-template-columns:repeat(2,1fr)}.summary-grid{grid-template-columns:repeat(2,1fr)}.result-head{flex-direction:column}.result-actions{padding-left:42px}}
+
+/* V2.1 recommendation grading */
+.result-card.grade-a{border-left:4px solid #138a5b}.result-card.grade-b{border-left:4px solid #d18a00}.result-card.grade-c{border-left:4px solid #7b8790}
+.badge.grade{font-weight:900}.badge.grade-a{background:#dff5e9;color:#087445}.badge.grade-b{background:#fff0d0;color:#9a6500}.badge.grade-c{background:#edf0f2;color:#5d6871}
+.reason-strip{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:0 0 12px;padding:9px 10px;border-radius:9px;background:#f7f9fb;font-size:11px}.reason-strip b{color:#25313a;margin-right:2px}.reason-strip span{background:#fff;border:1px solid #dde4e9;border-radius:14px;padding:4px 7px;color:#56626c}
+.condition-box.warning{background:#fff8e8;border-color:#ead19a}.condition-box.warning strong{color:#805b0b}
+
+
+.reverse-box{margin-top:17px;padding:15px;border:1px solid #b9d9f4;background:linear-gradient(180deg,#f5fbff,#edf7ff);border-radius:12px}.reverse-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}.reverse-head strong{font-size:15px;color:#174a72}.reverse-head span{font-size:10px;font-weight:800;color:var(--blue);background:#fff;border:1px solid #c9e0f2;padding:4px 7px;border-radius:20px}.reverse-actions{display:grid;grid-template-columns:1fr auto;gap:8px}.reverse-actions input{width:100%;border:1px solid #a9cbe6;border-radius:9px;background:#fff;padding:11px;font:inherit;font-size:14px;outline:none;text-transform:uppercase}.reverse-actions input:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(13,111,200,.12)}.reverse-help{display:block;margin-top:8px;color:var(--muted);font-size:11px;line-height:1.45}.reverse-overview{border-left:4px solid var(--blue)}.reverse-materials{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.material-tag{font-size:12px;font-weight:800;background:#e8f5ef;color:#087445;border-radius:20px;padding:6px 9px}.reverse-section-title{display:flex;justify-content:space-between;align-items:center;margin:18px 2px 10px}.reverse-section-title h3{margin:0;font-size:17px}.reverse-section-title span{font-size:12px;color:var(--muted)}.reverse-profile-list{display:flex;flex-direction:column;gap:12px}.reverse-profile{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 5px 18px rgba(23,33,43,.045);overflow:hidden}.reverse-profile-head{padding:13px 16px;background:#f7fafc;border-bottom:1px solid #e7ecef;display:flex;justify-content:space-between;gap:14px;align-items:center}.reverse-profile-head h4{margin:0;font-size:15px}.reverse-profile-head p{margin:3px 0 0;color:var(--muted);font-size:12px}.reverse-profile-body{padding:13px 16px}.reverse-candidates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.reverse-candidate{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;justify-content:space-between;gap:12px;align-items:center}.reverse-candidate h3{font-size:16px;margin:0}.reverse-candidate p{font-size:11px;color:var(--muted);margin:4px 0 0}.mode-banner{margin-bottom:13px;padding:10px 13px;border-radius:10px;background:#eaf5ff;border:1px solid #c7e0f3;color:#174a72;font-size:13px}.mode-banner strong{font-size:14px}.reverse-empty{padding:26px;text-align:center;color:var(--muted)}
+@media(max-width:750px){.reverse-candidates{grid-template-columns:1fr}.reverse-actions{grid-template-columns:1fr}.reverse-actions .btn{width:100%}}
+
+</style>
+
+<style>
+.portable-note{max-width:1220px;margin:14px auto 0;padding:10px 16px;border:1px solid #b9d9f4;background:#eef7ff;border-radius:12px;color:#174a72;font-size:14px}
+.header-actions a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+
+.reverse-box{margin-top:17px;padding:15px;border:1px solid #b9d9f4;background:linear-gradient(180deg,#f5fbff,#edf7ff);border-radius:12px}.reverse-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}.reverse-head strong{font-size:15px;color:#174a72}.reverse-head span{font-size:10px;font-weight:800;color:var(--blue);background:#fff;border:1px solid #c9e0f2;padding:4px 7px;border-radius:20px}.reverse-actions{display:grid;grid-template-columns:1fr auto;gap:8px}.reverse-actions input{width:100%;border:1px solid #a9cbe6;border-radius:9px;background:#fff;padding:11px;font:inherit;font-size:14px;outline:none;text-transform:uppercase}.reverse-actions input:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(13,111,200,.12)}.reverse-help{display:block;margin-top:8px;color:var(--muted);font-size:11px;line-height:1.45}.reverse-overview{border-left:4px solid var(--blue)}.reverse-materials{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.material-tag{font-size:12px;font-weight:800;background:#e8f5ef;color:#087445;border-radius:20px;padding:6px 9px}.reverse-section-title{display:flex;justify-content:space-between;align-items:center;margin:18px 2px 10px}.reverse-section-title h3{margin:0;font-size:17px}.reverse-section-title span{font-size:12px;color:var(--muted)}.reverse-profile-list{display:flex;flex-direction:column;gap:12px}.reverse-profile{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 5px 18px rgba(23,33,43,.045);overflow:hidden}.reverse-profile-head{padding:13px 16px;background:#f7fafc;border-bottom:1px solid #e7ecef;display:flex;justify-content:space-between;gap:14px;align-items:center}.reverse-profile-head h4{margin:0;font-size:15px}.reverse-profile-head p{margin:3px 0 0;color:var(--muted);font-size:12px}.reverse-profile-body{padding:13px 16px}.reverse-candidates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.reverse-candidate{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;justify-content:space-between;gap:12px;align-items:center}.reverse-candidate h3{font-size:16px;margin:0}.reverse-candidate p{font-size:11px;color:var(--muted);margin:4px 0 0}.mode-banner{margin-bottom:13px;padding:10px 13px;border-radius:10px;background:#eaf5ff;border:1px solid #c7e0f3;color:#174a72;font-size:13px}.mode-banner strong{font-size:14px}.reverse-empty{padding:26px;text-align:center;color:var(--muted)}
+@media(max-width:750px){.reverse-candidates{grid-template-columns:1fr}.reverse-actions{grid-template-columns:1fr}.reverse-actions .btn{width:100%}}
+
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">單一品牌・官方資料</div>
+      <h1>WINSTAR 官方選刀系統 <span>V2.8 GitHub 網頁上傳版</span></h1>
+      <p>依加工需求，從萬事達官方總型錄、系列單行本與新產品資料中選出實際刀號。</p>
+    </div>
+    <div class="header-actions">
+      <div class="data-status" id="dataStatus">資料載入中…</div>
+      <a class="btn ghost" href="https://www.winstarcutting.com.tw/downloads" target="_blank" rel="noopener">萬事達官網</a>
+    </div>
+  </header><div class="portable-note"><strong>GitHub Pages 網頁上傳版：</strong>資料由公開網站自動讀取。只需上傳本資料夾內的 data 與 index.html；官方 PDF 會直接開啟 WINSTAR 原廠檔案；電腦更新並發布資料後，手機重新整理即可同步。</div>
+
+  <main class="layout">
+    <aside class="panel filters">
+      <div class="section-title">
+        <div>
+          <span class="step">01</span>
+          <h2>加工需求</h2>
+        </div>
+        <button class="text-btn" id="resetBtn">清除</button>
+      </div>
+
+      <div class="field full">
+        <label>刀具品牌</label>
+        <div class="brand-lock"><strong>萬事達 WINSTAR</strong><span>官方資料庫</span></div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="material">加工材質 <b>必選</b></label>
+          <select id="material"><option value="">請選擇材質</option></select>
+        </div>
+        <div class="field">
+          <label for="hardness">硬度 <small>選填</small></label>
+          <input id="hardness" type="text" placeholder="例：HRC 55">
+        </div>
+        <div class="field">
+          <label for="operation">加工方式</label>
+          <select id="operation">
+            <option value="any">不限</option>
+            <option value="side">側銑</option>
+            <option value="slot">開槽／全槽</option>
+            <option value="rough">粗加工</option>
+            <option value="finish">精加工</option>
+            <option value="contour">曲面／輪廓</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="toolType">刀具類型</label>
+          <select id="toolType"><option value="">不限</option></select>
+        </div>
+        <div class="field">
+          <label for="diameter">刀徑 D（mm）</label>
+          <input id="diameter" type="number" min="0.01" step="0.01" placeholder="例：10">
+        </div>
+        <div class="field">
+          <label for="diameterMode">刀徑條件</label>
+          <select id="diameterMode">
+            <option value="exact">指定刀徑</option>
+            <option value="max">不大於此刀徑</option>
+            <option value="min">不小於此刀徑</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="depth">加工深度／最小刃長（mm）</label>
+          <input id="depth" type="number" min="0" step="0.1" placeholder="例：15">
+        </div>
+        <div class="field">
+          <label for="flutes">指定刃數 <small>選填</small></label>
+          <select id="flutes"><option value="">不限刃數</option></select>
+        </div>
+        <div class="field emphasized">
+          <label for="ap">AP 軸向切深（mm）<small>選填</small></label>
+          <input id="ap" type="number" min="0" step="0.01" placeholder="例：10">
+        </div>
+        <div class="field emphasized">
+          <label for="ae">AE 徑向切寬（mm）<small>選填</small></label>
+          <input id="ae" type="number" min="0" step="0.01" placeholder="例：1">
+        </div>
+        <div class="field">
+          <label for="maxRpm">機台最高轉速（rpm）<small>選填</small></label>
+          <input id="maxRpm" type="number" min="1" step="100" placeholder="例：12000">
+        </div>
+        <div class="field">
+          <label for="series">指定系列 <small>選填</small></label>
+          <select id="series"><option value="">不限系列</option></select>
+        </div>
+      </div>
+
+      <div class="reverse-box">
+        <div class="reverse-head"><strong>已知刀號，反查用途與參數</strong><span>獨立查詢</span></div>
+        <div class="reverse-actions">
+          <input id="reverseCode" type="text" autocomplete="off" placeholder="輸入完整或部分刀號，例如 ESSSVB4100000S">
+          <button class="btn secondary" id="reverseBtn">反查刀具</button>
+        </div>
+        <small class="reverse-help">反查不受上方材質、AP、AE等選刀條件限制；會列出這支刀可加工的材料、加工方式及全部官方 S／F 資料。機台轉速上限會沿用上方欄位。</small>
+      </div>
+
+      <label class="check-row">
+        <input type="checkbox" id="strictOfficial" checked>
+        <span><strong>AP／AE嚴格依官方範圍篩選</strong><small>已知不符合一律排除；勾選時，官方未提供AP／AE的刀具也排除。</small></span>
+      </label>
+
+      <button class="btn primary search-btn" id="searchBtn">開始選刀</button>
+      <p class="footnote">A／B／C只代表刀具適用程度；官方 Vc、fz 與 RPM／Feed 都會互相換算補齊。沒有該材料官方條件列時不會用其他材料資料代替。</p>
+    </aside>
+
+    <section class="content">
+      <div class="panel summary" id="summaryPanel">
+        <div class="section-title compact">
+          <div><span class="step">02</span><h2 id="resultHeading">推薦結果</h2></div>
+        </div>
+        <div id="summaryText" class="empty-summary">
+          選擇加工條件開始選刀，或在左下輸入刀號反查用途與參數。
+        </div>
+      </div>
+      <div id="results" class="results"></div>
+    </section>
+  </main>
+
+  <script>
+'use strict';
+
+let DB = null;
+let SOURCE_BY_ID = new Map();
+let PRODUCT_BY_CODE = new Map();
+let PROFILE_DONOR_BY_CODE = new Map();
+const el = id => document.getElementById(id);
+const num = id => {
+  const v = parseFloat(el(id).value);
+  return Number.isFinite(v) ? v : null;
+};
+const esc = value => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const fmt = (v, digits=2) => Number.isFinite(v) ? Number(v).toLocaleString('zh-TW',{maximumFractionDigits:digits}) : '—';
+const unique = arr => [...new Set(arr.filter(v => v !== null && v !== undefined && v !== ''))];
+
+const HARDNESS_RANGES = {
+  H60X:{min:35,max:60,label:'HRC 35–60'},
+  H65X:{min:40,max:65,label:'HRC 40–65'},
+  H68X:{min:50,max:68,label:'HRC 50–68'},
+  H70X:{min:50,max:70,label:'HRC 50–70'},
+  M50X:{min:0,max:50,label:'最高 HRC 50'},
+  G550:{min:0,max:55,label:'最高 HRC 55'},
+  G55X:{min:0,max:55,label:'最高 HRC 55'},
+  G55C:{min:0,max:55,label:'最高 HRC 55'}
+};
+
+// 系列順位只用於「哪個系列更適合這項加工」，不受S/F在型錄中是直接列值或公式換算影響。
+const SERIES_PRIORITY = {
+  superalloy:{
+    any:['V53','V52','V47','M50'], side:['V53','V52','V47','M50'], slot:['V53','V47','V52','M50'],
+    rough:['V53','V47','V52','M50'], finish:['V47','V53','V52','M50'], contour:['M50','V53','V47','H65']
+  },
+  titanium:{any:['V47','V52','V53','M50'],side:['V47','V52','V53','M50'],slot:['V47','V53','M50'],rough:['V47','V53','M50'],finish:['V47','V53','M50'],contour:['V47','M50','V53']},
+  stainless:{any:['V47','M50','V53','G55'],side:['V47','M50','V53'],slot:['V47','M50','V53'],rough:['V47','M50','V53'],finish:['V47','M50','V53'],contour:['M50','V47','V53']},
+  hardened:{any:['H70','H68','H65','H60','G55'],side:['H70','H68','H65','H60','G55'],slot:['H65','H60','G55'],rough:['H65','H60','G55'],finish:['H70','H68','H65'],contour:['H70','H68','H65']},
+  prehardened:{any:['H60','H65','G55','M50'],side:['H60','H65','G55','M50'],slot:['H60','G55','M50'],rough:['H60','G55','M50'],finish:['H65','H60','G55'],contour:['H65','H60','G55']},
+  alloy:{any:['G55','H60','M50','H65'],side:['G55','H60','M50'],slot:['G55','H60','M50'],rough:['G55','H60','M50'],finish:['H60','H65','G55'],contour:['H60','G55','M50']},
+  carbon:{any:['G55','M50','H60'],side:['G55','M50','H60'],slot:['G55','M50','H60'],rough:['G55','M50','H60'],finish:['G55','H60','M50'],contour:['G55','M50','H60']},
+  aluminum:{any:['A100'],side:['A100'],slot:['A100'],rough:['A100'],finish:['A100'],contour:['A100']},
+  graphite:{any:['A200'],side:['A200'],slot:['A200'],rough:['A200'],finish:['A200'],contour:['A200']},
+  composite:{any:['A300'],side:['A300'],slot:['A300'],rough:['A300'],finish:['A300'],contour:['A300']},
+  carbide:{any:['H800','A830'],side:['H800','A830'],slot:['H800','A830'],rough:['H800','A830'],finish:['H800','A830'],contour:['H800','A830']}
+};
+
+function seriesSuitabilityRank(p,q) {
+  const group=SERIES_PRIORITY[q.material];
+  if (!group) return 20;
+  const list=group[q.operation]||group.any||[];
+  const series=String(p.series||'').toUpperCase();
+  for (let i=0;i<list.length;i++) if (series.startsWith(String(list[i]).toUpperCase())) return i;
+  return list.length+10;
+}
+
+
+function refreshIndexes() {
+  SOURCE_BY_ID = new Map(DB.sources.map(s => [s.id, s]));
+  PRODUCT_BY_CODE = new Map(DB.products.map(p => [p.code, p]));
+  PROFILE_DONOR_BY_CODE = new Map();
+  const meaningfulCount = p => (p?.profileIds || []).map(i => DB.profiles[i]).filter(profileHasMachiningData).length;
+  const sameNumber = (a,b) => (a==null&&b==null) || (Number.isFinite(Number(a))&&Number.isFinite(Number(b))&&Math.abs(Number(a)-Number(b))<0.000001);
+  const sameGeometry = (a,b) => a && b && a.series===b.series && a.toolType===b.toolType && sameNumber(a.diameter,b.diameter) && sameNumber(a.flutes,b.flutes) && sameNumber(a.fluteLength,b.fluteLength) && sameNumber(a.cornerRadius,b.cornerRadius) && sameNumber(a.ballRadius,b.ballRadius);
+  for (const p of DB.products) {
+    if (!String(p.code||'').endsWith('S')) continue;
+    const donor=PRODUCT_BY_CODE.get(String(p.code).slice(0,-1)+'P');
+    if (sameGeometry(p,donor) && meaningfulCount(donor)>meaningfulCount(p)) PROFILE_DONOR_BY_CODE.set(p.code,donor);
+  }
+}
+
+function populateFilters() {
+  const mat = el('material');
+  Object.entries(DB.materialNames).forEach(([k,v]) => mat.add(new Option(v,k)));
+  unique(DB.products.map(p=>p.toolType)).sort().forEach(v=>el('toolType').add(new Option(v,v)));
+  unique(DB.products.map(p=>p.series)).sort((a,b)=>a.localeCompare(b,'en')).forEach(v=>el('series').add(new Option(v,v)));
+  unique(DB.products.map(p=>p.flutes).filter(Number.isFinite)).sort((a,b)=>a-b).forEach(v=>el('flutes').add(new Option(`${v} 刃`,String(v))));
+}
+
+function wireEvents() {
+  el('searchBtn').addEventListener('click', runSearch);
+  el('reverseBtn').addEventListener('click', runReverseLookup);
+  el('resetBtn').addEventListener('click', resetForm);
+  ['material','operation','toolType','diameter','depth','ap','ae','flutes','series','hardness','maxRpm'].forEach(id=>{
+    el(id).addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
+  });
+  el('reverseCode').addEventListener('keydown', e => { if (e.key === 'Enter') runReverseLookup(); });
+  el('results').addEventListener('click', e => {
+    const button=e.target.closest('[data-reverse-code]');
+    if (button) renderReverseProduct(PRODUCT_BY_CODE.get(button.dataset.reverseCode));
+  });
+}
+
+function resetForm() {
+  document.querySelectorAll('.filters input').forEach(i => {
+    if (i.type === 'checkbox') i.checked = true; else i.value = '';
+  });
+  document.querySelectorAll('.filters select').forEach(s => s.selectedIndex = 0);
+  el('operation').value='any'; el('diameterMode').value='exact';
+  el('results').innerHTML='';
+  el('resultHeading').textContent='推薦結果';
+  el('summaryText').className='empty-summary';
+  el('summaryText').textContent='選擇加工條件開始選刀，或在左下輸入刀號反查用途與參數。';
+}
+
+
+function profileHasMachiningData(x) {
+  return !!(x && (x.ap || x.ae || x.vcRange || Object.keys(x.fzValues||{}).length || Object.keys(x.diameterValues||{}).length));
+}
+
+function getProductProfiles(p) {
+  const own=(p.profileIds || []).map(i=>DB.profiles[i]).filter(Boolean);
+  if (own.some(profileHasMachiningData)) return own;
+  const donor=PROFILE_DONOR_BY_CODE.get(p.code);
+  if (!donor) return own;
+  const inherited=(donor.profileIds || []).map(i=>DB.profiles[i]).filter(Boolean);
+  return inherited.length ? inherited : own;
+}
+
+function productMaterials(p) {
+  return unique([...(p.materials||[]), ...getProductProfiles(p).map(x=>x.material).filter(x=>x && x!=='any')]);
+}
+
+function materialSupportInfo(p, material) {
+  const profiles=getProductProfiles(p).filter(profileHasMachiningData);
+  const exact=profiles.filter(x=>x.material===material || x.material==='any');
+  if (exact.length) return {supported:true,exact:true,source:'official_condition'};
+  // 若同一刀型已有其他材料的完整速度/進給表，代表官方明確列了材料範圍；沒有選定材料列就不跨材料套用。
+  const hasOtherCompleteMaterialTable=profiles.some(x=>x.material && x.material!=='any' && (x.mode==='rpm_feed_table'||x.mode==='vc_fz'));
+  if (hasOtherCompleteMaterialTable) return {supported:false,exact:false,source:'missing_material_row'};
+  const iconSupport=(p.materials||[]).includes(material);
+  return {supported:iconSupport,exact:false,source:iconSupport?'official_icon_only':'none'};
+}
+
+function parseHardness(text) {
+  if (!text) return null;
+  const m=String(text).match(/(?:HRC\s*)?(\d+(?:\.\d+)?)/i);
+  return m ? Number(m[1]) : null;
+}
+
+function hardnessInfo(p, hardness) {
+  if (!Number.isFinite(hardness)) return {known:false, fits:true, rank:1, label:'未指定'};
+  const exact=HARDNESS_RANGES[p.series];
+  const fallback=Object.entries(HARDNESS_RANGES).find(([k])=>String(p.series||'').startsWith(k))?.[1];
+  const range=exact||fallback;
+  if (!range) return {known:false, fits:true, rank:2, label:'官方系列硬度範圍未建檔'};
+  const fits=hardness>=range.min-0.01 && hardness<=range.max+0.01;
+  return {known:true,fits,rank:fits?0:9,label:range.label};
+}
+
+function factorContains(f, actualRatio) {
+  if (!f || !Number.isFinite(actualRatio)) return false;
+  const tolerance = 0.015;
+  const min=Number(f.min),max=Number(f.max);
+  if (f.kind==='max' || f.kind==='exact') return actualRatio>0 && actualRatio<=max+tolerance;
+  return actualRatio >= min-tolerance && actualRatio <= max+tolerance;
+}
+
+function factorStatus(f, actualRatio, supplied) {
+  if (!supplied) return {state:'not_requested',rank:0};
+  if (!f) return {state:'missing',rank:2};
+  return factorContains(f,actualRatio) ? {state:'fit',rank:0} : {state:'reject',rank:99};
+}
+
+function operationRank(profile,q) {
+  if (!profile) return 3;
+  if (q.operation==='any') return profile.operation==='any'?1:0;
+  if (profile.operation===q.operation) return 0;
+  if (profile.operation==='any') return 1;
+  return 99;
+}
+
+function profileEvaluation(profile,q) {
+  if (!profile) return {ok:false,missing:true};
+  if (q.material && profile.material!==q.material && profile.material!=='any') return {ok:false};
+  const opRank=operationRank(profile,q);
+  if (opRank>=99) return {ok:false};
+  const ap=factorStatus(profile.ap,q.ap/q.diameterForCondition,q.ap!==null);
+  const ae=factorStatus(profile.ae,q.ae/q.diameterForCondition,q.ae!==null);
+  if (ap.state==='reject' || ae.state==='reject') return {ok:false,knownMismatch:true};
+  if (q.strict && (ap.state==='missing' || ae.state==='missing')) return {ok:false,missingOfficial:true};
+  const missingCount=[ap,ae].filter(x=>x.state==='missing').length;
+  const detailPriority=Number.isFinite(profile.detailPriority)?profile.detailPriority:0;
+  return {ok:true,opRank,ap,ae,missingCount,detailPriority};
+}
+
+function isSaneEntry(value,d,z) {
+  if (!value) return false;
+  const rpm=Number(value.rpm),feed=Number(value.feed);
+  if (!Number.isFinite(rpm)||!Number.isFinite(feed)||rpm<100||rpm>200000||feed<1||feed>100000) return false;
+  const fz=feed/(rpm*Math.max(1,z));
+  if (!Number.isFinite(fz)||fz<0.00005||fz>5) return false;
+  if (Number.isFinite(value.vc)) {
+    const actualVc=Math.PI*d*rpm/1000;
+    const ref=Number(value.vc);
+    if (ref>0 && (actualVc<ref*0.45 || actualVc>ref*1.65)) return false;
+  }
+  return true;
+}
+
+function validEntries(obj,z) {
+  return Object.entries(obj||{}).map(([k,v])=>({diameter:parseFloat(k),value:v}))
+    .filter(x=>Number.isFinite(x.diameter)&&isSaneEntry(x.value,x.diameter,z));
+}
+
+function nearestValidEntry(obj,diameter,z) {
+  const entries=validEntries(obj,z);
+  if (!entries.length) return null;
+  entries.sort((a,b)=>Math.abs(a.diameter-diameter)-Math.abs(b.diameter-diameter));
+  return {...entries[0],exact:Math.abs(entries[0].diameter-diameter)<.011};
+}
+
+function capOne(rpm,feed,cap) {
+  if (!Number.isFinite(cap)||rpm<=cap) return {rpm,feed,capped:false};
+  return {rpm:cap,feed:feed*(cap/rpm),capped:true};
+}
+
+function capRange(low,mid,high,cap) {
+  if (!Number.isFinite(cap)) return {low,mid,high,capped:false};
+  const oldMid=mid;
+  low=Math.min(low,cap); mid=Math.min(mid,cap); high=Math.min(high,cap);
+  return {low,mid,high,capped:oldMid>cap};
+}
+
+function calculateCutting(p,profile,q) {
+  if (!profile || !Number.isFinite(p.diameter) || !Number.isFinite(p.flutes)) return null;
+  const d=p.diameter,z=p.flutes,cap=q.maxRpm;
+  if (profile.mode==='rpm_feed_table') {
+    const hit=nearestValidEntry(profile.diameterValues,d,z);
+    if (!hit) return null;
+    const sourceRpm=Number(hit.value.rpm),sourceFeed=Number(hit.value.feed);
+    if (hit.exact) {
+      const c=capOne(sourceRpm,sourceFeed,cap);
+      const fz=sourceFeed/(sourceRpm*z);
+      const vc=Math.PI*hit.diameter*sourceRpm/1000;
+      return {kind:'direct',rpmLow:c.rpm,rpmMid:c.rpm,rpmHigh:c.rpm,feedLow:c.feed,feedMid:c.feed,feedHigh:c.feed,vcLow:vc,vcHigh:vc,fz,tableDiameter:hit.diameter,exactDiameter:true,capped:c.capped,qualityRank:0};
+    }
+    const vc=Math.PI*hit.diameter*sourceRpm/1000;
+    const fz=sourceFeed/(sourceRpm*z);
+    let rpm=1000*vc/(Math.PI*d),feed=rpm*z*fz;
+    const c=capOne(rpm,feed,cap);
+    return {kind:'scaled_table',rpmLow:c.rpm,rpmMid:c.rpm,rpmHigh:c.rpm,feedLow:c.feed,feedMid:c.feed,feedHigh:c.feed,vcLow:vc,vcHigh:vc,fz,tableDiameter:hit.diameter,exactDiameter:false,capped:c.capped,qualityRank:1};
+  }
+  if (profile.mode==='vc_fz' && profile.vcRange) {
+    const vcLow=Number(profile.vcRange[0]),vcHigh=Number(profile.vcRange[1]);
+    if (!Number.isFinite(vcLow)||!Number.isFinite(vcHigh)||vcLow<=0||vcHigh<=0) return null;
+    let rpmLow=1000*vcLow/(Math.PI*d),rpmHigh=1000*vcHigh/(Math.PI*d),rpmMid=(rpmLow+rpmHigh)/2;
+    const c=capRange(rpmLow,rpmMid,rpmHigh,cap);rpmLow=c.low;rpmMid=c.mid;rpmHigh=c.high;
+    const fzHit=nearestValidFz(profile.fzValues,d);
+    const fz=fzHit?Number(fzHit.value):null;
+    return {kind:'vc_fz',rpmLow,rpmMid,rpmHigh,feedLow:Number.isFinite(fz)?rpmLow*z*fz:null,feedMid:Number.isFinite(fz)?rpmMid*z*fz:null,feedHigh:Number.isFinite(fz)?rpmHigh*z*fz:null,vcLow,vcHigh,fz,tableDiameter:fzHit?.diameter,exactDiameter:fzHit?.exact,capped:c.capped,qualityRank:fzHit?.exact?1:2};
+  }
+  return null;
+}
+
+function nearestValidFz(obj,diameter) {
+  const entries=Object.entries(obj||{}).map(([k,v])=>({diameter:parseFloat(k),value:Number(v)}))
+    .filter(x=>Number.isFinite(x.diameter)&&Number.isFinite(x.value)&&x.value>0&&x.value<=5);
+  if (!entries.length) return null;
+  entries.sort((a,b)=>Math.abs(a.diameter-diameter)-Math.abs(b.diameter-diameter));
+  return {...entries[0],exact:Math.abs(entries[0].diameter-diameter)<.011};
+}
+
+
+function hasKnownApAeMismatch(p,q) {
+  if (q.ap===null && q.ae===null) return false;
+  const samePage=getProductProfiles(p).filter(profile=>operationRank(profile,q)<99);
+  const materialMatched=samePage.filter(profile=>!q.material||profile.material===q.material||profile.material==='any');
+  const pool=materialMatched.length?materialMatched:samePage;
+  let known=0, rejected=0, fitted=0;
+  for (const profile of pool) {
+    const ap=factorStatus(profile.ap,q.ap/q.diameterForCondition,q.ap!==null);
+    const ae=factorStatus(profile.ae,q.ae/q.diameterForCondition,q.ae!==null);
+    const hasKnown=(q.ap===null||profile.ap)||(q.ae===null||profile.ae);
+    if (!hasKnown) continue;
+    known++;
+    if (ap.state==='reject'||ae.state==='reject') rejected++; else if (ap.state==='fit'||ae.state==='fit') fitted++;
+  }
+  return known>0 && rejected===known && fitted===0;
+}
+
+function chooseProfile(p,q) {
+  const candidates=[];
+  for (const profile of getProductProfiles(p)) {
+    const evaluation=profileEvaluation(profile,q);
+    if (!evaluation.ok) continue;
+    const calc=calculateCutting(p,profile,q);
+    candidates.push({profile,evaluation,calc});
+  }
+  candidates.sort((a,b)=>
+    a.evaluation.opRank-b.evaluation.opRank ||
+    a.evaluation.missingCount-b.evaluation.missingCount ||
+    a.evaluation.detailPriority-b.evaluation.detailPriority ||
+    (a.calc?0:1)-(b.calc?0:1)
+  );
+  return candidates[0]||null;
+}
+
+function queryFromForm() {
+  const d=num('diameter');
+  return {
+    material:el('material').value,
+    hardness:parseHardness(el('hardness').value.trim()),
+    operation:el('operation').value,
+    toolType:el('toolType').value,
+    diameter:d,
+    diameterMode:el('diameterMode').value,
+    depth:num('depth'),
+    ap:num('ap'), ae:num('ae'),
+    flutes:num('flutes'), maxRpm:num('maxRpm'),
+    series:el('series').value,
+    strict:el('strictOfficial').checked,
+    diameterForCondition:d
+  };
+}
+
+
+function flutePreferenceRank(p,q) {
+  if (q.flutes!==null || !Number.isFinite(p.flutes)) return 0;
+  const z=Number(p.flutes);
+  if (q.operation==='slot') return Math.abs(z-3);
+  if (q.operation==='side' || q.operation==='finish') return Math.abs(z-4);
+  if (q.operation==='rough') return Math.abs(z-4)*0.8;
+  return 0;
+}
+
+function gradeResult(p,q,selected,hardness) {
+  const seriesRank=seriesSuitabilityRank(p,q);
+  if (!selected) return {grade:'C',rank:2,label:'C級・規格符合',seriesRank,reasons:['官方圖示標示適用，但未提供所選材料的完整加工條件']};
+  const {evaluation,calc,profile}=selected;
+  const requested=[q.ap!==null,q.ae!==null].filter(Boolean).length;
+  const complete=requested===0 || evaluation.missingCount===0;
+  const opExact=q.operation==='any'||profile.operation===q.operation;
+  const hardnessClear=!Number.isFinite(q.hardness)||hardness.known;
+  let grade='B',rank=1,label='B級・官方適用';
+  if (complete&&opExact&&hardnessClear) {grade='A';rank=0;label='A級・官方條件完整';}
+  const reasons=[];
+  if (seriesRank===0) reasons.push('材料／加工方式優先系列');
+  else if (seriesRank<10) reasons.push(`同材料系列順位第 ${seriesRank+1}`);
+  else reasons.push('官方標示可加工此材質');
+  if (profile.materialDetail) reasons.push(`材質條件：${profile.materialDetail}`);
+  reasons.push(opExact?'加工方式完全符合':'官方條件為通用加工');
+  if (requested) reasons.push(complete?'AP／AE均符合官方範圍':'部分AP／AE官方未提供');
+  if (calc?.kind==='direct') reasons.push('參數來源：官方RPM／Feed表');
+  else if (calc?.kind==='scaled_table') reasons.push(`參數來源：官方Ø${fmt(calc.tableDiameter)}表反算Vc、fz`);
+  else if (calc?.kind==='vc_fz') reasons.push('參數來源：官方Vc、fz換算');
+  else reasons.push('官方S／F資料未完整連結');
+  if (Number.isFinite(q.hardness)) reasons.push(hardness.known?`硬度符合${hardness.label}`:'該系列官方硬度範圍未建檔');
+  return {grade,rank,label,seriesRank,reasons};
+}
+
+function runSearch() {
+  if (!DB) return;
+  const q=queryFromForm();
+  if (!q.material) { alert('請先選擇加工材質。'); el('material').focus(); return; }
+  if ((q.ap!==null || q.ae!==null) && !q.diameter) { alert('填寫 AP 或 AE 時，必須同時輸入刀徑。'); el('diameter').focus(); return; }
+  el('resultHeading').textContent='推薦結果';
+  const rows=[];
+  for (const p of DB.products) {
+    if (q.toolType && p.toolType!==q.toolType) continue;
+    if (q.series && p.series!==q.series) continue;
+    if (q.flutes!==null && Number(p.flutes)!==q.flutes) continue;
+    if (q.depth!==null && (!Number.isFinite(p.fluteLength) || p.fluteLength+1e-9<q.depth)) continue;
+    if (q.diameter!==null) {
+      if (!Number.isFinite(p.diameter)) continue;
+      if (q.diameterMode==='exact' && Math.abs(p.diameter-q.diameter)>0.011) continue;
+      if (q.diameterMode==='max' && p.diameter-q.diameter>0.001) continue;
+      if (q.diameterMode==='min' && q.diameter-p.diameter>0.001) continue;
+    }
+    const materialSupport=materialSupportInfo(p,q.material);
+    if (!materialSupport.supported) continue;
+    const hard=hardnessInfo(p,q.hardness);
+    if (!hard.fits) continue;
+    const q2={...q,diameterForCondition:p.diameter};
+    const selected=chooseProfile(p,q2);
+    if (!selected && hasKnownApAeMismatch(p,q2)) continue;
+    if ((q.ap!==null||q.ae!==null) && q.strict && !selected) continue;
+    const grade=gradeResult(p,q2,selected,hard);
+    const depthSurplus=q.depth!==null&&Number.isFinite(p.fluteLength)?Math.max(0,p.fluteLength-q.depth):999;
+    const diameterDiff=q.diameter!==null?Math.abs(p.diameter-q.diameter):0;
+    const sourceTime=Date.parse(p.sourceDate||'2025-01-01')||0;
+    const fluteRank=flutePreferenceRank(p,q2);
+    rows.push({p,profile:selected?.profile||null,calc:selected?.calc||null,evaluation:selected?.evaluation||null,grade,hard,materialSupport,depthSurplus,diameterDiff,sourceTime,fluteRank});
+  }
+  rows.sort((a,b)=>
+    a.grade.rank-b.grade.rank ||
+    a.grade.seriesRank-b.grade.seriesRank ||
+    (a.evaluation?.opRank??9)-(b.evaluation?.opRank??9) ||
+    (a.evaluation?.missingCount??9)-(b.evaluation?.missingCount??9) ||
+    a.fluteRank-b.fluteRank ||
+    a.depthSurplus-b.depthSurplus ||
+    a.diameterDiff-b.diameterDiff ||
+    b.sourceTime-a.sourceTime ||
+    a.p.code.localeCompare(b.p.code)
+  );
+  renderResults(rows.slice(0,50),rows.length,q);
+}
+
+function normalizedToolCode(value) {
+  return String(value||'').trim().toUpperCase().replace(/\s+/g,'');
+}
+
+function runReverseLookup() {
+  if (!DB) return;
+  const query=normalizedToolCode(el('reverseCode').value);
+  if (!query) { alert('請輸入刀具編碼。'); el('reverseCode').focus(); return; }
+  el('resultHeading').textContent='刀號反查結果';
+  const exact=PRODUCT_BY_CODE.get(query);
+  if (exact) { renderReverseProduct(exact); return; }
+  const matches=DB.products.filter(p=>normalizedToolCode(p.code).includes(query))
+    .sort((a,b)=>{
+      const ap=normalizedToolCode(a.code).startsWith(query)?0:1;
+      const bp=normalizedToolCode(b.code).startsWith(query)?0:1;
+      return ap-bp || String(a.code).length-String(b.code).length || String(a.code).localeCompare(String(b.code));
+    });
+  if (matches.length===1) { renderReverseProduct(matches[0]); return; }
+  renderReverseCandidates(matches.slice(0,80),matches.length,query);
+}
+
+function renderReverseCandidates(matches,total,query) {
+  const summary=el('summaryText'); summary.className='';
+  summary.innerHTML=`<div class="mode-banner"><strong>刀號反查：</strong>「${esc(query)}」找到 ${fmt(total,0)} 個可能刀號，請選擇完整刀號。</div>`;
+  if (!matches.length) {
+    el('results').innerHTML='<div class="no-results"><h3>找不到這個刀號</h3><p>請確認英文字母與數字，或先輸入刀號前半段搜尋。</p></div>';
+    return;
+  }
+  el('results').innerHTML=`<div class="reverse-candidates">${matches.map(p=>`
+    <div class="reverse-candidate">
+      <div><h3>${esc(p.code)}</h3><p>${esc(p.series)}・${esc(p.toolType)}・Ø${fmt(p.diameter)}・${Number.isFinite(p.flutes)?p.flutes+'刃':'刃數未建檔'}</p></div>
+      <button class="btn secondary" data-reverse-code="${esc(p.code)}">查看用途</button>
+    </div>`).join('')}</div>`;
+}
+
+function reverseHardnessLabel(p) {
+  const exact=HARDNESS_RANGES[p.series];
+  const fallback=Object.entries(HARDNESS_RANGES).find(([k])=>String(p.series||'').startsWith(k))?.[1];
+  return (exact||fallback)?.label || '官方系列硬度範圍未建檔';
+}
+
+function dedupeProfiles(profiles) {
+  const seen=new Set();
+  return profiles.filter(profile=>{
+    const key=[profile.sourceId,profile.page,profile.title,profile.material,profile.materialDetail,profile.operation,profile.mode,
+      profile.ap?.raw,profile.ae?.raw,JSON.stringify(profile.vcRange||[]),JSON.stringify(profile.fzValues||{}),JSON.stringify(profile.diameterValues||{})].join('|');
+    if (seen.has(key)) return false;
+    seen.add(key); return true;
+  });
+}
+
+function renderReverseProduct(p) {
+  if (!p) return;
+  el('resultHeading').textContent='刀號反查結果';
+  el('reverseCode').value=p.code;
+  const src=SOURCE_BY_ID.get(p.sourceId)||{};
+  const pdfPage=p.sourcePage||p.pdfPage||1;
+  const pdfURL=src.file?`${src.url || '#'}#page=${pdfPage}`:'#';
+  const materials=productMaterials(p);
+  const profiles=dedupeProfiles(getProductProfiles(p).filter(profileHasMachiningData))
+    .sort((a,b)=>String(DB.materialNames[a.material]||a.material).localeCompare(String(DB.materialNames[b.material]||b.material),'zh-Hant') || operationRank(a,{operation:'any'})-operationRank(b,{operation:'any'}) || (a.page||0)-(b.page||0));
+  const summary=el('summaryText'); summary.className='';
+  summary.innerHTML=`<div class="summary-grid">
+    <div class="summary-item"><b>1</b><span>完整刀號</span></div>
+    <div class="summary-item"><b>${fmt(materials.length,0)}</b><span>官方適用材料類別</span></div>
+    <div class="summary-item"><b>${fmt(profiles.length,0)}</b><span>官方加工條件組</span></div>
+    <div class="summary-item"><b>${Number.isFinite(p.flutes)?p.flutes:'—'}</b><span>刃數</span></div>
+  </div>`;
+  const materialTags=materials.length?materials.map(k=>`<span class="material-tag">${esc(DB.materialNames[k]||k)}</span>`).join(''):'<span class="material-tag">官方材料資料未連結</span>';
+  const overview=`<article class="result-card reverse-overview">
+    <div class="result-head">
+      <div class="result-title-wrap"><div class="rank">刀</div><div class="result-title">
+        <h3>${esc(p.code)}</h3><p>${esc(p.productName||`${p.series} ${p.toolType}`)}</p>
+        <div class="badges"><span class="badge official">${esc(p.series)}</span><span class="badge">${esc(p.toolType)}</span>${p.form?`<span class="badge">${esc(p.form)}</span>`:''}</div>
+      </div></div>
+      <div class="result-actions">${src.file?`<a class="pdf-btn" href="${pdfURL}" target="_blank" rel="noopener">開啟官方PDF 第${pdfPage}頁</a>`:''}</div>
+    </div>
+    <div class="result-body">
+      <div class="spec-grid">
+        <div class="spec"><span>刀徑 D</span><strong>${Number.isFinite(p.diameter)?'Ø'+fmt(p.diameter):'—'}</strong></div>
+        <div class="spec"><span>刃數</span><strong>${Number.isFinite(p.flutes)?p.flutes+'刃':'—'}</strong></div>
+        <div class="spec"><span>刃長 CL</span><strong>${Number.isFinite(p.fluteLength)?fmt(p.fluteLength)+' mm':'—'}</strong></div>
+        <div class="spec"><span>有效長</span><strong>${Number.isFinite(p.effectiveLength)?fmt(p.effectiveLength)+' mm':'—'}</strong></div>
+        <div class="spec"><span>全長 OAL</span><strong>${Number.isFinite(p.overallLength)?fmt(p.overallLength)+' mm':'—'}</strong></div>
+        <div class="spec"><span>柄徑</span><strong>${Number.isFinite(p.shankDiameter)?'Ø'+fmt(p.shankDiameter):'—'}</strong></div>
+      </div>
+      <div class="condition-row"><span>官方硬度</span><strong>${esc(reverseHardnessLabel(p))}</strong></div>
+      <div class="condition-row"><span>資料來源</span><strong>${esc(src.title||src.file||p.sourceType)} 第${esc(pdfPage)}頁</strong></div>
+      <div class="reverse-materials">${materialTags}</div>
+    </div>
+  </article>`;
+  const profileHTML=profiles.length?profiles.map((profile,i)=>reverseProfileCard(p,profile,i+1)).join(''):
+    '<div class="no-results"><h3>這支刀的基本規格已找到</h3><p>目前資料庫尚未連結到可換算的官方加工條件表，因此只顯示官方適用材料與規格。</p></div>';
+  el('results').innerHTML=overview+`<div class="reverse-section-title"><h3>這支刀能加工什麼、怎麼加工</h3><span>依官方目錄逐組顯示；直接S/F與Vc、fz換算同樣視為官方條件</span></div><div class="reverse-profile-list">${profileHTML}</div>`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function reverseProfileCard(p,profile,index) {
+  const src=SOURCE_BY_ID.get(profile.sourceId)||{};
+  const page=profile.page||1;
+  const url=src.file?`${src.url || '#'}#page=${page}`:'#';
+  const calc=calculateCutting(p,profile,{maxRpm:num('maxRpm')});
+  const materialName=profile.materialDetail||DB.materialNames[profile.material]||profile.material||'官方材料';
+  return `<article class="reverse-profile">
+    <div class="reverse-profile-head">
+      <div><h4>${index}. ${esc(materialName)}｜${esc(operationName(profile.operation))}</h4><p>${esc(profile.title||p.productName||p.series)}</p></div>
+      ${src.file?`<a class="btn secondary" href="${url}" target="_blank" rel="noopener">官方條件 第${page}頁</a>`:''}
+    </div>
+    <div class="reverse-profile-body">
+      <div class="condition-grid">
+        <div class="condition-box">
+          <h4>官方加工範圍</h4>
+          <div class="condition-row"><span>材料</span><strong>${esc(materialName)}</strong></div>
+          <div class="condition-row"><span>加工方式</span><strong>${esc(operationName(profile.operation))}</strong></div>
+          <div class="condition-row"><span>AP（Ap×D）</span><strong>${factorToText(profile.ap,p.diameter)}</strong></div>
+          <div class="condition-row"><span>AE（Ae×D）</span><strong>${factorToText(profile.ae,p.diameter)}</strong></div>
+          <div class="condition-row"><span>條件來源</span><strong>${esc(src.title||src.file||'官方型錄')} 第${page}頁</strong></div>
+        </div>
+        ${cuttingHTML(calc,profile)}
+      </div>
+    </div>
+  </article>`;
+}
+
+function factorToText(f,d) {
+  if (!f) return '官方未提供';
+  const low=Number(f.min)*d,high=Number(f.max)*d;
+  const prefix=(f.kind==='max'||f.kind==='exact')?'最大建議 ':'推薦範圍 ';
+  const mm=(f.kind==='max'||f.kind==='exact')?`≤ ${fmt(high)} mm`:(Math.abs(low-high)<.0001?`${fmt(low)} mm`:`${fmt(low)}～${fmt(high)} mm`);
+  return `${prefix}${esc(f.raw||'')}（換算 ${mm}）`;
+}
+
+function operationName(k) {return ({any:'不限／通用',side:'側銑',slot:'開槽',rough:'粗加工',finish:'精加工',contour:'曲面／輪廓'})[k]||k;}
+
+function cuttingHTML(calc,profile) {
+  if (!calc) {
+    const why=profile?'官方頁面已取得AP／AE，但沒有可對應的Vc、fz或RPM／Feed數據':'找不到所選材料與加工方式的官方切削條件列';
+    return `<div class="condition-box machining warning"><h4>官方轉速與進給</h4><div class="condition-row"><span>結果</span><strong>${why}</strong></div><div class="condition-row"><span>處理方式</span><strong>不跨材料、不跨刀型套用，也不顯示猜測值</strong></div></div>`;
+  }
+  const direct=calc.kind==='direct'||calc.kind==='scaled_table';
+  const range=calc.kind==='vc_fz';
+  const rpmText=range?`${fmt(calc.rpmLow,0)}～${fmt(calc.rpmHigh,0)}`:fmt(calc.rpmMid,0);
+  const feedOk=Number.isFinite(calc.feedMid);
+  const feedText=!feedOk?'官方未提供 fz':range?`${fmt(calc.feedLow,0)}～${fmt(calc.feedHigh,0)}`:fmt(calc.feedMid,0);
+  const vcText=Number.isFinite(calc.vcLow)?(Math.abs(calc.vcLow-calc.vcHigh)<.001?fmt(calc.vcLow):`${fmt(calc.vcLow)}～${fmt(calc.vcHigh)}`):'—';
+  const sourceLabel=calc.kind==='direct'?'同刀徑官方S／F直接值':calc.kind==='scaled_table'?'依官方表格反算後換算':'依官方Vc／fz換算';
+  const near=calc.kind==='scaled_table'?`；基準刀徑 Ø${fmt(calc.tableDiameter)}`:(calc.kind==='vc_fz'&&!calc.exactDiameter&&Number.isFinite(calc.tableDiameter)?`；fz採相近刀徑 Ø${fmt(calc.tableDiameter)}`:'');
+  const cap=calc.capped?'；已依機台最高轉速下修':' ';
+  return `<div class="condition-box machining">
+    <h4>建議轉速與進給 <span class="badge official">${sourceLabel}</span></h4>
+    <div class="hero-values">
+      <div class="hero-value"><span>主軸轉速 S</span><strong>${rpmText}</strong><small> rpm${range?`；標準 ${fmt(calc.rpmMid,0)}`:''}</small></div>
+      <div class="hero-value"><span>進給速度 F</span><strong>${feedText}</strong><small> mm/min${feedOk&&range?`；標準 ${fmt(calc.feedMid,0)}`:''}</small></div>
+    </div>
+    <div class="condition-row"><span>官方 Vc</span><strong>${vcText} m/min</strong></div>
+    <div class="condition-row"><span>官方 fz</span><strong>${Number.isFinite(calc.fz)?fmt(calc.fz,4)+' mm/刃':'官方未提供'}</strong></div>
+    <div class="condition-row"><span>資料說明</span><strong>${sourceLabel}${near}${cap}</strong></div>
+  </div>`;
+}
+
+function renderResults(rows,total,q) {
+  const summary=el('summaryText'); summary.className='';
+  const gradeCounts={A:rows.filter(r=>r.grade.grade==='A').length,B:rows.filter(r=>r.grade.grade==='B').length,C:rows.filter(r=>r.grade.grade==='C').length};
+  summary.innerHTML=`<div class="summary-grid">
+    <div class="summary-item"><b>${fmt(total,0)}</b><span>符合刀號總數</span></div>
+    <div class="summary-item"><b>${fmt(gradeCounts.A,0)}</b><span>A級官方條件完整</span></div>
+    <div class="summary-item"><b>${fmt(gradeCounts.B,0)}</b><span>B級官方適用</span></div>
+    <div class="summary-item"><b>${fmt(gradeCounts.C,0)}</b><span>C級規格符合</span></div>
+  </div>`;
+  if (!rows.length) {
+    el('results').innerHTML='<div class="no-results"><h3>沒有找到符合條件的官方刀具</h3><p>已知AP／AE不符與硬度超出系列範圍會直接排除。可檢查加工量、刀徑或改選其他系列。</p></div>';
+    return;
+  }
+  el('results').innerHTML=rows.map((r,i)=>resultCard(r,i+1)).join('');
+}
+
+function resultCard({p,profile,calc,grade,hard},rank) {
+  const src=SOURCE_BY_ID.get(p.sourceId)||{};
+  const pdfPage=p.sourcePage||p.pdfPage||1;
+  const pdfURL=src.file?`${src.url || '#'}#page=${pdfPage}`:'#';
+  const mats=productMaterials(p).map(k=>DB.materialNames[k]||k).join('、');
+  const newBadge=(p.sourceType==='新產品單行本'||String(p.sourceDate||'')>='2026-01-01')?'<span class="badge new">新產品資料</span>':'';
+  const apText=profile?factorToText(profile.ap,p.diameter):'同頁官方未提供';
+  const aeText=profile?factorToText(profile.ae,p.diameter):'同頁官方未提供';
+  const reasonText=grade.reasons.map(x=>`<span>${esc(x)}</span>`).join('');
+  return `<article class="result-card grade-${grade.grade.toLowerCase()}">
+    <div class="result-head">
+      <div class="result-title-wrap"><div class="rank">${rank}</div><div class="result-title">
+        <h3>${esc(p.code)}</h3><p>${esc(p.productName||`${p.series} ${p.toolType}`)}</p>
+        <div class="badges"><span class="badge grade grade-${grade.grade.toLowerCase()}">${esc(grade.label)}</span><span class="badge official">${esc(p.series)}</span><span class="badge">${esc(p.toolType)}</span>${p.form?`<span class="badge">${esc(p.form)}</span>`:''}${newBadge}</div>
+      </div></div>
+      <div class="result-actions">${src.file?`<a class="pdf-btn" href="${pdfURL}" target="_blank" rel="noopener">開啟官方PDF 第${pdfPage}頁</a>`:''}</div>
+    </div>
+    <div class="result-body">
+      <div class="reason-strip"><b>排名依據</b>${reasonText}</div>
+      <div class="spec-grid">
+        <div class="spec"><span>刀徑 D</span><strong>Ø${fmt(p.diameter)}</strong></div>
+        <div class="spec"><span>刃數</span><strong>${Number.isFinite(p.flutes)?p.flutes+'刃':'—'}</strong></div>
+        <div class="spec"><span>刃長 CL</span><strong>${Number.isFinite(p.fluteLength)?fmt(p.fluteLength)+' mm':'—'}</strong></div>
+        <div class="spec"><span>全長 OAL</span><strong>${Number.isFinite(p.overallLength)?fmt(p.overallLength)+' mm':'—'}</strong></div>
+        <div class="spec"><span>柄徑</span><strong>${Number.isFinite(p.shankDiameter)?'Ø'+fmt(p.shankDiameter):'—'}</strong></div>
+        <div class="spec"><span>官方硬度</span><strong>${hard.known?esc(hard.label):'未建檔'}</strong></div>
+      </div>
+      <div class="condition-grid">
+        <div class="condition-box">
+          <h4>官方加工範圍</h4>
+          <div class="condition-row"><span>適用材質</span><strong>${esc(profile?.materialDetail||mats||'依官方系列資料')}</strong></div>
+          <div class="condition-row"><span>加工方式</span><strong>${profile?operationName(profile.operation):'同頁官方條件未連結'}</strong></div>
+          <div class="condition-row"><span>AP（Ap×D）</span><strong>${apText}</strong></div>
+          <div class="condition-row"><span>AE（Ae×D）</span><strong>${aeText}</strong></div>
+          <div class="condition-row"><span>條件來源</span><strong>${profile?esc((SOURCE_BY_ID.get(profile.sourceId)||{}).title || (SOURCE_BY_ID.get(profile.sourceId)||{}).file || '官方型錄')+' 第'+esc(profile.page)+'頁':'—'}</strong></div>
+        </div>
+        ${cuttingHTML(calc,profile)}
+      </div>
+      <div class="source-line"><span>來源：${esc(src.title||src.file||p.sourceType)}</span><span>日期：${esc(p.sourceDate||src.date||'—')}</span><span>類型：${esc(p.sourceType||src.type||'官方資料')}</span><span>型錄頁：${esc(p.catalogPage||'—')}</span></div>
+    </div>
+  </article>`;
+}
+
+
+
+async function loadPublishedDB() {
+  const [dataResponse, versionResponse] = await Promise.all([
+    fetch('./data/winstar-data.json', { cache: 'no-cache' }),
+    fetch('./data/version.json', { cache: 'no-cache' })
+  ]);
+  if (!dataResponse.ok) throw new Error('無法讀取公開資料庫（' + dataResponse.status + '）');
+  const data = await dataResponse.json();
+  if (!validPublishedDB(data)) throw new Error('公開資料庫格式不正確');
+  if (versionResponse.ok) data.publishedVersion = await versionResponse.json();
+  return data;
+}
+
+function validPublishedDB(value) {
+  return value && typeof value === 'object' && Array.isArray(value.products) &&
+    Array.isArray(value.sources) && Array.isArray(value.profiles) && value.materialNames;
+}
+
+function updateStatusLabel() {
+  const m = DB.meta || {};
+  const v = DB.publishedVersion || {};
+  const published = v.publishedAt ? String(v.publishedAt).replace('T', ' ').slice(0, 16) : '—';
+  el('dataStatus').innerHTML = '<strong>' + fmt(m.productCount,0) + '</strong> 支刀具・' + fmt(m.sourceCount,0) + ' 份官方資料<br><small>V' + esc(v.appVersion || m.appVersion || '—') + '・發布 ' + esc(published) + '</small>';
+}
+
+async function init() {
+  try {
+    DB = await loadPublishedDB();
+    refreshIndexes();
+    populateFilters();
+    updateStatusLabel();
+    wireEvents();
+  } catch (err) {
+    el('dataStatus').textContent = err.message;
+    el('dataStatus').style.color = '#ad2e2e';
+    el('summaryText').innerHTML = '<div class="no-results">' + esc(err.message) + '</div>';
+  }
+}
+
+document.addEventListener('DOMContentLoaded',init);
+
+</script>
+</body>
+</html>

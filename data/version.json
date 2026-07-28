@@ -1,0 +1,15 @@
+{
+  "appVersion": "2.8",
+  "publishedAt": "2026-07-28T09:00:00+08:00",
+  "latestSourceDate": "2026-06-02",
+  "productCount": 5450,
+  "sourceCount": 26,
+  "summary": "GitHub 網頁上傳專用版：僅含 data、index.html、README.md，沒有隱藏檔或大型 PDF，可一次拖曳上傳。",
+  "changes": [
+    "資料庫由網頁內嵌改為 data/winstar-data.json。",
+    "網頁啟動時會檢查 version.json，顯示公開資料版本與發布時間。",
+    "保留 V2.6 的 5,450 支刀具、26 份官方資料與官方 PDF。",
+    "官方 PDF 改為直連 WINSTAR 官方網址，避免網頁版重複上傳大型公開檔。",
+    "移除 .nojekyll、.gitignore 與 manifest，改為 GitHub 網頁一次拖曳上傳版。"
+  ]
+}
