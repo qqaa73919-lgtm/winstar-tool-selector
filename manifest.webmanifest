@@ -1,0 +1,24 @@
+{
+  "name": "WINSTAR 官方選刀系統",
+  "short_name": "WINSTAR 選刀",
+  "description": "萬事達五大產品入口與整體式銑刀官方資料選刀",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#075aaa",
+  "icons": [
+    {
+      "src": "./data/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./data/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

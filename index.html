@@ -3,7 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WINSTAR 官方選刀系統 V2.9</title>
+  <meta name="theme-color" content="#075aaa">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="./data/icon-192.png">
+  <link rel="apple-touch-icon" href="./data/apple-touch-icon.png">
+  <title>WINSTAR 官方選刀系統 V3.0</title>
   <style>
 :root{--bg:#f4f6f8;--panel:#fff;--ink:#17212b;--muted:#66717d;--line:#dfe4e8;--blue:#075aaa;--blue2:#0d6fc8;--cyan:#eaf5ff;--green:#117a53;--amber:#9b5c00;--red:#ad2e2e;--shadow:0 10px 30px rgba(23,33,43,.08);font-family:"Segoe UI","Microsoft JhengHei",sans-serif;color:var(--ink);background:var(--bg)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#eef5fb 0,#f4f6f8 260px);min-height:100vh}.topbar{max-width:1500px;margin:0 auto;padding:30px 34px 20px;display:flex;justify-content:space-between;gap:30px;align-items:flex-start}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}h1{font-size:31px;margin:5px 0 7px;letter-spacing:-.03em}h1 span{font-size:16px;color:var(--blue);vertical-align:middle}h2{font-size:19px;margin:0}.topbar p{margin:0;color:var(--muted)}.header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}.data-status{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.04)}.layout{max-width:1500px;margin:0 auto;padding:0 34px 35px;display:grid;grid-template-columns:430px 1fr;gap:22px}.panel{background:var(--panel);border:1px solid rgba(208,217,224,.95);border-radius:16px;box-shadow:var(--shadow)}.filters{padding:22px;position:sticky;top:12px;align-self:start;max-height:calc(100vh - 24px);overflow:auto}.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.section-title>div{display:flex;align-items:center;gap:10px}.section-title.compact{margin-bottom:12px}.step{display:inline-grid;place-items:center;width:31px;height:31px;border-radius:9px;background:var(--blue);color:#fff;font-size:12px;font-weight:800}.text-btn{border:0;background:none;color:var(--blue);font-weight:700;cursor:pointer}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:700}.field label b{color:var(--red);font-size:11px}.field label small{font-weight:500;color:var(--muted);margin-left:4px}.field input,.field select{width:100%;border:1px solid #cfd7de;border-radius:9px;background:#fff;padding:10px 11px;font:inherit;font-size:14px;color:var(--ink);outline:none}.field input:focus,.field select:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(13,111,200,.12)}.field.emphasized{background:var(--cyan);padding:9px;border-radius:11px}.brand-lock{display:flex;align-items:center;justify-content:space-between;border:1px solid #bed8ef;background:#f0f8ff;border-radius:10px;padding:11px 12px;margin-bottom:13px}.brand-lock span{font-size:11px;font-weight:700;color:var(--blue);background:#fff;padding:4px 7px;border-radius:20px}.check-row{display:flex;gap:10px;margin:17px 0 14px;padding:12px;background:#f8fafb;border:1px solid var(--line);border-radius:10px;cursor:pointer}.check-row input{margin-top:2px}.check-row span{display:flex;flex-direction:column;font-size:13px}.check-row small{color:var(--muted);font-size:11px;margin-top:3px;line-height:1.45}.btn{border:0;border-radius:9px;padding:10px 15px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;transition:.18s}.btn:hover{transform:translateY(-1px)}.btn.primary{background:var(--blue);color:#fff}.btn.secondary{background:#fff;color:var(--blue);border:1px solid #b8cee1}.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}.btn.danger:hover{color:var(--red);border-color:#e0b2b2}.search-btn{width:100%;font-size:15px;padding:13px}.footnote{font-size:11px;color:var(--muted);line-height:1.55;margin:10px 2px 0}.content{min-width:0}.summary{padding:20px 22px;margin-bottom:16px}.empty-summary{color:var(--muted);padding:12px 0}.summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.summary-item{background:#f7f9fb;border-radius:10px;padding:11px}.summary-item b{display:block;font-size:18px}.summary-item span{font-size:11px;color:var(--muted)}.results{display:flex;flex-direction:column;gap:13px}.result-card{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 6px 22px rgba(23,33,43,.055);overflow:hidden}.result-head{display:flex;justify-content:space-between;gap:18px;padding:18px 20px 14px;border-bottom:1px solid #edf0f2}.rank{width:30px;height:30px;border-radius:8px;background:#e7f2fb;color:var(--blue);font-weight:900;display:grid;place-items:center;flex:0 0 auto}.result-title-wrap{display:flex;gap:12px;min-width:0}.result-title{min-width:0}.result-title h3{margin:0;font-size:19px;letter-spacing:.01em}.result-title p{margin:4px 0 0;color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.badge{font-size:11px;padding:4px 7px;border-radius:20px;background:#eef1f4;color:#4d5963;font-weight:700}.badge.official{background:#e8f5ef;color:var(--green)}.badge.new{background:#fff1d7;color:var(--amber)}.result-actions{display:flex;align-items:flex-start}.pdf-btn{text-decoration:none;color:#fff;background:var(--blue);font-size:12px;font-weight:800;border-radius:8px;padding:9px 11px;white-space:nowrap}.result-body{padding:15px 20px 18px}.spec-grid{display:grid;grid-template-columns:repeat(6,minmax(82px,1fr));gap:8px;margin-bottom:14px}.spec{background:#f7f9fa;border-radius:9px;padding:9px}.spec span{display:block;color:var(--muted);font-size:10px}.spec strong{font-size:14px}.condition-grid{display:grid;grid-template-columns:1.1fr 1.4fr;gap:12px}.condition-box{border:1px solid var(--line);border-radius:11px;padding:12px}.condition-box h4{font-size:13px;margin:0 0 9px}.condition-row{display:grid;grid-template-columns:80px 1fr;gap:8px;padding:5px 0;border-bottom:1px dashed #e6eaed;font-size:12px}.condition-row:last-child{border-bottom:0}.condition-row span{color:var(--muted)}.condition-row strong{font-weight:750}.machining{background:#f2f8fd;border-color:#c9dfef}.machining .hero-values{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.hero-value{background:#fff;border-radius:9px;padding:10px}.hero-value span{font-size:10px;color:var(--muted);display:block}.hero-value strong{font-size:20px;color:var(--blue)}.hero-value small{font-size:10px;color:var(--muted)}.source-line{font-size:11px;color:var(--muted);margin-top:11px;display:flex;gap:10px;flex-wrap:wrap}.no-results{background:#fff;border:1px dashed #bcc7cf;border-radius:14px;padding:42px;text-align:center;color:var(--muted)}dialog{border:0;border-radius:16px;padding:0;width:min(700px,92vw);box-shadow:0 25px 80px rgba(0,0,0,.25)}dialog::backdrop{background:rgba(20,30,40,.45)}.dialog-head{display:flex;justify-content:space-between;padding:22px 24px 14px}.icon-btn{border:0;background:#eef1f3;width:32px;height:32px;border-radius:50%;font-size:22px;cursor:pointer}.progress-track{height:7px;background:#e7edf1;margin:0 24px;border-radius:10px;overflow:hidden}.progress-track div{height:100%;width:0;background:var(--blue);transition:width .25s}.update-message{font-weight:750;padding:17px 24px 8px}.update-log{margin:0 24px;background:#101820;color:#c9d4dc;border-radius:10px;min-height:190px;max-height:330px;overflow:auto;padding:12px;font:12px/1.55 Consolas,monospace;white-space:pre-wrap}.dialog-actions{display:flex;justify-content:flex-end;padding:15px 24px 20px}@media(max-width:1050px){.layout{grid-template-columns:1fr}.filters{position:static;max-height:none}.topbar{flex-direction:column}.header-actions{justify-content:flex-start}.spec-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.topbar,.layout{padding-left:15px;padding-right:15px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.condition-grid{grid-template-columns:1fr}.spec-grid{grid-template-columns:repeat(2,1fr)}.summary-grid{grid-template-columns:repeat(2,1fr)}.result-head{flex-direction:column}.result-actions{padding-left:42px}}
@@ -49,16 +53,20 @@
 .condition-grid{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}.machining .hero-values{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 .spec-extra{display:flex;gap:7px;flex-wrap:wrap;margin:-3px 0 13px}.spec-extra span{background:#f3f6f8;border-radius:18px;padding:5px 8px;font-size:11px;color:#51606c}
 .mode-intro{padding:15px;border:1px solid #c9dfef;background:#f3f9fe;border-radius:11px;margin-bottom:14px;color:#174a72}.mode-intro strong{display:block;margin-bottom:4px}.mode-intro p{margin:0;font-size:12px;line-height:1.55}
+.conditional-field{margin-top:13px;padding:11px 12px;border:1px solid #ead19a;background:#fff9ec;border-radius:10px}.conditional-field[hidden]{display:none}
+.required-mark{color:var(--red);font-weight:900;margin-right:3px}.material-note{grid-column:1/-1;margin:-4px 1px 0;color:var(--muted);font-size:11px;line-height:1.45}
+.product-hub{max-width:1432px;margin:0 auto 18px;padding:18px;background:#fff;border:1px solid rgba(208,217,224,.95);border-radius:16px;box-shadow:var(--shadow)}.hub-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:13px}.hub-head p{margin:4px 0 0;color:var(--muted);font-size:13px}.category-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.category-card{border:1px solid #d7e1e9;background:#f8fafc;border-radius:12px;padding:13px;text-align:left;cursor:pointer;color:#26343f;min-height:82px}.category-card strong{display:block;font-size:15px;margin-bottom:7px}.category-card span{font-size:11px;color:var(--muted)}.category-card.active{border-color:var(--blue);background:#eaf5ff;box-shadow:inset 0 0 0 1px var(--blue)}.category-card.active strong,.category-card.active span{color:var(--blue)}.recent-products{margin-top:13px;border-top:1px solid var(--line);padding-top:12px}.recent-products summary{cursor:pointer;color:var(--blue);font-size:13px;font-weight:800}.recent-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:11px}.recent-card{border:1px solid var(--line);border-radius:10px;padding:11px;background:#fafcfd}.recent-card b{display:block;font-size:13px}.recent-card span{display:block;color:var(--muted);font-size:11px;margin:4px 0 9px}.recent-card a{font-size:11px;font-weight:800;color:var(--blue);text-decoration:none}.category-notice{max-width:1432px;margin:0 auto 30px;padding:28px;background:#fff;border:1px solid #c9dfef;border-left:5px solid var(--blue);border-radius:14px;box-shadow:var(--shadow)}.category-notice[hidden]{display:none}.category-notice h2{margin-bottom:8px}.category-notice p{color:var(--muted);line-height:1.65}.category-notice a{color:var(--blue);font-weight:800}.custom-grade[hidden]{display:none}
 @media(max-width:1050px){.search-actions{bottom:0}.filters{overflow:visible}.update-reminder{margin-left:15px;margin-right:15px}}
-@media(max-width:650px){.mode-tabs{position:sticky;top:0;z-index:7}.advanced .field-grid{grid-template-columns:1fr}.update-reminder{align-items:flex-start;flex-direction:column}.update-actions{width:100%}.update-actions>*{flex:1;text-align:center}}
+@media(max-width:1050px){.product-hub,.category-notice{margin-left:15px;margin-right:15px}.category-grid{grid-template-columns:repeat(3,1fr)}.recent-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.mode-tabs{position:sticky;top:0;z-index:7}.advanced .field-grid{grid-template-columns:1fr}.update-reminder{align-items:flex-start;flex-direction:column}.update-actions{width:100%}.update-actions>*{flex:1;text-align:center}.category-grid{grid-template-columns:1fr 1fr}.category-card{min-height:76px}.hub-head{align-items:flex-start;flex-direction:column}.recent-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
   <header class="topbar">
     <div>
-      <div class="eyebrow">單一品牌・官方資料</div>
-      <h1>WINSTAR 官方選刀系統 <span>V2.9 GitHub 網頁上傳版</span></h1>
-      <p>依加工需求，從萬事達官方總型錄、系列單行本與新產品資料中選出實際刀號。</p>
+      <div class="eyebrow">萬事達五大產品入口・官方資料</div>
+      <h1>WINSTAR 官方選刀系統 <span>V3.0 GitHub 網頁上傳版</span></h1>
+      <p>整合萬事達五大刀具類別；目前整體式銑刀可依官方資料直接選刀。</p>
     </div>
     <div class="header-actions">
       <div class="data-status" id="dataStatus">資料載入中…</div>
@@ -73,7 +81,29 @@
     </div>
   </div>
 
-  <main class="layout">
+  <section class="product-hub">
+    <div class="hub-head"><div><h2>五大產品系統</h2><p>先選類別；尚未完成建檔的類別不會提供推測結果。</p></div><small>藍色代表目前可使用</small></div>
+    <div class="category-grid" role="tablist" aria-label="產品類別">
+      <button class="category-card" data-category="indexable"><strong>捨棄式銑刀</strong><span>資料建置中</span></button>
+      <button class="category-card active" data-category="solid"><strong>整體式銑刀</strong><span>5,450 支刀具・可直接選刀</span></button>
+      <button class="category-card" data-category="holemaking"><strong>孔加工刀具</strong><span>資料建置中</span></button>
+      <button class="category-card" data-category="turning"><strong>車削刀具</strong><span>資料建置中</span></button>
+      <button class="category-card" data-category="threading"><strong>螺紋刀具</strong><span>資料建置中</span></button>
+    </div>
+    <details class="recent-products">
+      <summary>近期官方產品追蹤（點此展開）</summary>
+      <div class="recent-grid">
+        <div class="recent-card"><b>DTS90</b><span>孔加工刀具・近期產品</span><a href="https://www.winstarcutting.com.tw/archives/5494" target="_blank" rel="noopener">查看官方頁面</a></div>
+        <div class="recent-card"><b>CXAN</b><span>捨棄式銑刀・近期產品</span><a href="https://www.winstarcutting.com.tw/archives/5492" target="_blank" rel="noopener">查看官方頁面</a></div>
+        <div class="recent-card"><b>ZONES 階梯鑽</b><span>孔加工刀具・2026-07-14</span><a href="https://www.winstarcutting.com.tw/archives/5477" target="_blank" rel="noopener">查看官方頁面</a></div>
+        <div class="recent-card"><b>H65X EHBUC</b><span>整體式銑刀・2026-06-10</span><a href="https://www.winstarcutting.com.tw/archives/5457" target="_blank" rel="noopener">查看官方頁面</a></div>
+        <div class="recent-card"><b>G55CX／H60X 5F</b><span>整體式銑刀・2026-05-19</span><a href="https://www.winstarcutting.com.tw/archives/5442" target="_blank" rel="noopener">查看官方頁面</a></div>
+      </div>
+    </details>
+  </section>
+  <section class="category-notice" id="categoryNotice" hidden></section>
+
+  <main class="layout" id="selectorLayout">
     <aside class="panel filters">
       <div class="mode-tabs" role="tablist" aria-label="查詢模式">
         <button class="mode-tab active" id="selectModeTab" data-mode="select" role="tab" aria-selected="true">依條件選刀</button>
@@ -95,12 +125,21 @@
 
       <div class="field-grid">
         <div class="field">
-          <label for="material">加工材質 <b>必填</b></label>
+          <label for="material"><span class="required-mark">＊</span>加工材質</label>
           <select id="material"><option value="">請選擇材質</option></select>
         </div>
         <div class="field">
-          <label for="hardness">硬度 <small>選填</small></label>
-          <input id="hardness" type="text" placeholder="例：HRC 55">
+          <label for="materialGrade">材料牌號 <small>選填</small></label>
+          <select id="materialGrade" disabled><option value="">請先選擇加工材質</option></select>
+          <input class="custom-grade" id="materialGradeCustom" type="text" placeholder="輸入實際材料牌號" hidden>
+        </div>
+        <div class="field">
+          <label for="diameter"><span class="required-mark">＊</span>刀徑 D（mm）</label>
+          <input id="diameter" type="number" min="0.01" step="0.01" placeholder="例：10">
+        </div>
+        <div class="field">
+          <label for="maxRpm">機台最高轉速（rpm） <small>選填</small></label>
+          <input id="maxRpm" type="number" min="1" step="100" placeholder="例：12000">
         </div>
         <div class="field">
           <label for="operation">加工方式 <small>選填</small></label>
@@ -118,18 +157,6 @@
           <select id="toolType"><option value="">不限</option></select>
         </div>
         <div class="field">
-          <label for="diameter">刀徑 D（mm） <b>必填</b></label>
-          <input id="diameter" type="number" min="0.01" step="0.01" placeholder="例：10">
-        </div>
-        <div class="field">
-          <label for="diameterMode">刀徑條件 <small>選填</small></label>
-          <select id="diameterMode">
-            <option value="exact">指定刀徑</option>
-            <option value="max">不大於此刀徑</option>
-            <option value="min">不小於此刀徑</option>
-          </select>
-        </div>
-        <div class="field">
           <label for="depth">所需最小刃長 CL（mm） <small>選填</small></label>
           <input id="depth" type="number" min="0" step="0.1" placeholder="例：15">
           <p class="field-help">只保留刃長 CL 大於或等於此數值的刀具，不代表 AP。</p>
@@ -138,9 +165,14 @@
           <label for="flutes">指定刃數 <small>選填</small></label>
           <select id="flutes"><option value="">不限刃數</option></select>
         </div>
+        <p class="material-note">材料牌號用來記錄實際工件；官方未分牌號提供數據時，仍依上方加工材質的大類條件選刀。</p>
+      </div>
+      <div class="field conditional-field" id="hardnessField" hidden>
+        <label for="hardness">加工硬度 HRC <small>選填，僅預硬鋼／高硬度鋼</small></label>
+        <input id="hardness" type="number" min="0" max="75" step="1" placeholder="例：55">
       </div>
       <details class="advanced">
-        <summary>進階條件（AP、AE、轉速、系列）</summary>
+        <summary>進階條件（AP、AE、刀徑模式、系列）</summary>
         <div class="field-grid">
           <div class="field emphasized">
             <label for="ap">AP 軸向切深（mm） <small>選填</small></label>
@@ -151,8 +183,12 @@
             <input id="ae" type="number" min="0" step="0.01" placeholder="例：1">
           </div>
           <div class="field">
-            <label for="maxRpm">機台最高轉速（rpm） <small>選填</small></label>
-            <input id="maxRpm" type="number" min="1" step="100" placeholder="例：12000">
+            <label for="diameterMode">刀徑模式 <small>選填</small></label>
+            <select id="diameterMode">
+              <option value="exact">指定刀徑</option>
+              <option value="max">不大於此刀徑</option>
+              <option value="min">不小於此刀徑</option>
+            </select>
           </div>
           <div class="field">
             <label for="series">指定系列 <small>選填</small></label>
@@ -174,10 +210,6 @@
           <div class="reverse-actions">
             <input id="reverseCode" type="text" autocomplete="off" placeholder="例如 EPSSVB4100000T">
             <button class="btn secondary" id="reverseBtn">反查刀具</button>
-          </div>
-          <div class="field reverse-max">
-            <label for="reverseMaxRpm">機台最高轉速（rpm） <small>選填</small></label>
-            <input id="reverseMaxRpm" type="number" min="1" step="100" placeholder="例：12000">
           </div>
           <small class="reverse-help">輸入部分刀號會先列出候選；輸入完整刀號會直接展開所有已連結的官方條件。</small>
         </div>
@@ -222,6 +254,29 @@ const HARDNESS_RANGES = {
   G550:{min:0,max:55,label:'最高 HRC 55'},
   G55X:{min:0,max:55,label:'最高 HRC 55'},
   G55C:{min:0,max:55,label:'最高 HRC 55'}
+};
+const MATERIAL_GRADES = {
+  carbon:['S20C','S45C','S50C','FC250','FCD450'],
+  alloy:['SCM415','SCM440','SNCM439','SKD11','SKD61','SKH51'],
+  prehardened:['NAK80','P20','718H'],
+  hardened:['SKD11','SKD61','SKH51','SUJ2'],
+  stainless:['SUS303','SUS304','SUS304L','SUS316','SUS316L','SUS420J2','SUS430','SUS630／17-4PH','雙相鋼 2205'],
+  castiron:['FC250','FCD450'],
+  titanium:['純鈦','Ti-6Al-4V'],
+  superalloy:['Inconel 625','Inconel 718','Hastelloy C-276'],
+  aluminum:['A2017','A5052','A6061','A7075','ADC12'],
+  copper:['C1100','C3604','鈹銅'],
+  plastic:['POM','PEEK','PTFE','壓克力'],
+  graphite:['一般石墨','高密度石墨'],
+  composite:['CFRP','GFRP','Kevlar'],
+  ceramic:['氧化鋁陶瓷','氧化鋯陶瓷','玻璃'],
+  carbide:['WC-Co 硬質合金']
+};
+const CATEGORY_INFO = {
+  indexable:{name:'捨棄式銑刀',text:'目前尚未匯入完整刀片、刀桿與適用條件，因此暫不提供選刀，避免把整體式銑刀資料誤套。'},
+  holemaking:{name:'孔加工刀具',text:'目前尚未匯入完整鑽削、鉸削與孔加工系列資料，因此暫不提供推測推薦。'},
+  turning:{name:'車削刀具',text:'目前尚未匯入完整車刀、刀片與斷屑槽條件，因此暫不提供推測推薦。'},
+  threading:{name:'螺紋刀具',text:'目前尚未匯入完整螺紋銑削、絲攻與牙規資料，因此暫不提供推測推薦。'}
 };
 
 // 系列順位只用於「哪個系列更適合這項加工」，不受S/F在型錄中是直接列值或公式換算影響。
@@ -272,6 +327,7 @@ function populateFilters() {
   unique(DB.products.map(p=>p.toolType)).sort().forEach(v=>el('toolType').add(new Option(v,v)));
   unique(DB.products.map(p=>p.series)).sort((a,b)=>a.localeCompare(b,'en')).forEach(v=>el('series').add(new Option(v,v)));
   unique(DB.products.map(p=>p.flutes).filter(Number.isFinite)).sort((a,b)=>a-b).forEach(v=>el('flutes').add(new Option(`${v} 刃`,String(v))));
+  updateMaterialGradeOptions();
 }
 
 function wireEvents() {
@@ -281,16 +337,55 @@ function wireEvents() {
   document.querySelectorAll('.mode-tab').forEach(button=>{
     button.addEventListener('click',()=>switchMode(button.dataset.mode));
   });
-  ['material','operation','toolType','diameter','depth','ap','ae','flutes','series','hardness','maxRpm'].forEach(id=>{
+  ['material','materialGradeCustom','operation','toolType','diameter','depth','ap','ae','flutes','series','hardness','maxRpm'].forEach(id=>{
     el(id).addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
   });
+  el('material').addEventListener('change',updateMaterialGradeOptions);
+  el('materialGrade').addEventListener('change',toggleCustomGrade);
   el('reverseCode').addEventListener('keydown', e => { if (e.key === 'Enter') runReverseLookup(); });
-  el('reverseMaxRpm').addEventListener('keydown', e => { if (e.key === 'Enter') runReverseLookup(); });
+  document.querySelectorAll('[data-category]').forEach(button=>button.addEventListener('click',()=>switchCategory(button.dataset.category)));
   el('snoozeUpdate').addEventListener('click',snoozeUpdateReminder);
   el('results').addEventListener('click', e => {
     const button=e.target.closest('[data-reverse-code]');
     if (button) renderReverseProduct(PRODUCT_BY_CODE.get(button.dataset.reverseCode));
   });
+}
+
+function updateMaterialGradeOptions() {
+  const material=el('material').value;
+  const select=el('materialGrade');
+  select.innerHTML='';
+  select.add(new Option(material?'不限牌號':'請先選擇加工材質',''));
+  (MATERIAL_GRADES[material]||[]).forEach(grade=>select.add(new Option(grade,grade)));
+  if (material) select.add(new Option('其他／自訂','__other__'));
+  select.disabled=!material;
+  el('materialGradeCustom').value='';
+  el('materialGradeCustom').hidden=true;
+  const showHardness=material==='prehardened'||material==='hardened';
+  el('hardnessField').hidden=!showHardness;
+  if (!showHardness) el('hardness').value='';
+}
+
+function toggleCustomGrade() {
+  const custom=el('materialGrade').value==='__other__';
+  el('materialGradeCustom').hidden=!custom;
+  if (custom) el('materialGradeCustom').focus();
+  else el('materialGradeCustom').value='';
+}
+
+function switchCategory(category) {
+  const solid=category==='solid';
+  document.querySelectorAll('[data-category]').forEach(button=>{
+    const active=button.dataset.category===category;
+    button.classList.toggle('active',active);
+    button.setAttribute('aria-selected',String(active));
+  });
+  el('selectorLayout').hidden=!solid;
+  el('categoryNotice').hidden=solid;
+  if (!solid) {
+    const info=CATEGORY_INFO[category];
+    el('categoryNotice').innerHTML=`<h2>${esc(info.name)}｜資料建置中</h2><p>${esc(info.text)}</p><p><a href="https://www.winstarcutting.com.tw/products" target="_blank" rel="noopener">先查看 WINSTAR 官方產品分類</a></p>`;
+  }
 }
 
 function switchMode(mode) {
@@ -314,6 +409,7 @@ function resetForm() {
   });
   document.querySelectorAll('.filters select').forEach(s => s.selectedIndex = 0);
   el('operation').value='any'; el('diameterMode').value='exact';
+  updateMaterialGradeOptions();
   el('results').innerHTML='';
   el('resultHeading').textContent='推薦結果';
   el('summaryText').className='empty-summary';
@@ -535,8 +631,10 @@ function chooseProfile(p,q) {
 
 function queryFromForm() {
   const d=num('diameter');
+  const selectedGrade=el('materialGrade').value;
   return {
     material:el('material').value,
+    materialGrade:selectedGrade==='__other__'?el('materialGradeCustom').value.trim():selectedGrade,
     hardness:parseHardness(el('hardness').value.trim()),
     operation:el('operation').value,
     toolType:el('toolType').value,
@@ -571,6 +669,7 @@ function gradeResult(p,q,selected,hardness) {
   let grade='B',rank=1,label='B級・官方適用';
   if (complete&&opExact&&hardnessClear) {grade='A';rank=0;label='A級・官方條件完整';}
   const reasons=[];
+  if (q.materialGrade) reasons.push(`工件牌號：${q.materialGrade}（依材料大類選刀）`);
   if (seriesRank===0) reasons.push('材料／加工方式優先系列');
   else if (seriesRank<10) reasons.push(`同材料系列順位第 ${seriesRank+1}`);
   else reasons.push('官方標示可加工此材質');
@@ -742,7 +841,7 @@ function reverseProfileCard(p,profile,index) {
   const src=SOURCE_BY_ID.get(profile.sourceId)||{};
   const page=profile.page||1;
   const url=src.file?`${src.url || '#'}#page=${page}`:'#';
-  const calc=calculateCutting(p,profile,{maxRpm:num('reverseMaxRpm')});
+  const calc=calculateCutting(p,profile,{maxRpm:null});
   const materialName=profile.materialDetail||DB.materialNames[profile.material]||profile.material||'官方材料';
   return `<article class="reverse-profile">
     <div class="reverse-profile-head">
