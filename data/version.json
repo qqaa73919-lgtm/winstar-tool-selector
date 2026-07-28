@@ -1,15 +1,19 @@
 {
-  "appVersion": "2.8",
-  "publishedAt": "2026-07-28T09:00:00+08:00",
+  "appVersion": "2.9",
+  "publishedAt": "2026-07-28T12:00:00+08:00",
+  "lastCheckedAt": "2026-07-28T12:00:00+08:00",
+  "remindAfterDays": 30,
   "latestSourceDate": "2026-06-02",
   "productCount": 5450,
   "sourceCount": 26,
-  "summary": "GitHub 網頁上傳專用版：僅含 data、index.html、README.md，沒有隱藏檔或大型 PDF，可一次拖曳上傳。",
+  "summary": "精簡選刀與完整刀號反查分區；AP／AE 只顯示官方實際提供的資料，並加入每 30 天自動資料檢查提醒。",
   "changes": [
-    "資料庫由網頁內嵌改為 data/winstar-data.json。",
-    "網頁啟動時會檢查 version.json，顯示公開資料版本與發布時間。",
-    "保留 V2.6 的 5,450 支刀具、26 份官方資料與官方 PDF。",
-    "官方 PDF 改為直連 WINSTAR 官方網址，避免網頁版重複上傳大型公開檔。",
-    "移除 .nojekyll、.gitignore 與 manifest，改為 GitHub 網頁一次拖曳上傳版。"
+    "依條件選刀與刀號反查改為兩個獨立模式。",
+    "所需刃長 CL 與 AP 定義分開，必填與選填標示更清楚。",
+    "AP、AE、機台轉速與指定系列收進進階條件。",
+    "移除 AP／AE 嚴格篩選勾選；一般平銑刀、圓鼻銑刀缺少官方 AP 時，以 CL×0.8 做內部安全檢核，但不在介面冒充官方值。",
+    "缺少官方 AE 時只檢查 AE 不得大於刀徑，並降低排序；結果只顯示官方實際提供的 AP／AE。",
+    "移除條件來源與資料說明列；沒有官方轉速進給資料時不顯示空白警告框。",
+    "每 30 天自動提醒用電腦檢查 WINSTAR 官方資料更新。"
   ]
 }
