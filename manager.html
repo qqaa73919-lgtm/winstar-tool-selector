@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WINSTAR 資料管理端</title>
+  <link rel="stylesheet" href="assets/manager.css">
+</head>
+<body>
+  <header><div><b>WINSTAR 資料管理端</b><span>V4.2 官方資料驗證與替換</span></div><a href="index.html">返回選刀系統</a></header>
+  <main>
+    <section class="hero"><p>電腦正式管理端</p><h1>先驗證，再發布</h1><div class="stats"><span><b id="currentProducts">—</b> 刀具</span><span><b id="currentProfiles">—</b> 參數組</span><span><b id="currentEntries">—</b> 全目錄索引</span></div></section>
+    <section class="grid">
+      <article><h2>1　選擇新版資料</h2><p>選擇由母檔轉出的 <code>winstar-data.json</code>。檔案只在本機瀏覽器中處理。</p><input id="dbFile" type="file" accept=".json,application/json"><button id="validate">驗證主資料</button></article>
+      <article><h2>2　驗證結果</h2><pre id="result">尚未選擇檔案</pre></article>
+      <article><h2>3　下載發布檔</h2><p>通過後下載標準JSON，再替換 <code>data/winstar-data.json</code>。</p><button id="download" disabled>下載驗證後資料</button></article>
+    </section>
+    <section class="rules"><h2>發布安全規則</h2><ul><li>產品刀號不得重複，外徑必須有效。</li><li>所有參數索引必須能找到對應參數。</li><li>所有來源ID必須能找到官方來源。</li><li>官方直接值、公式推算與待核對資料必須分開標記。</li></ul><p><a href="docs/WINSTAR_五大類分類校正母檔_V4.2.xlsx">下載 V4.2 正式分類校正母檔</a></p></section>
+  </main>
+  <script src="assets/manager.js" defer></script>
+</body>
+</html>
