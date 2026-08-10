@@ -32,7 +32,10 @@
         <label class="search-field"><span data-i18n="toolKeyword">刀號關鍵字</span><div class="input-clear"><input id="toolInput" type="search" autocomplete="off" data-placeholder="toolPlaceholder" placeholder="輸入完整或部分刀號"><button id="clearTool" type="button" aria-label="清除刀號">×</button></div><div id="toolSuggestions" class="suggestions" hidden></div></label>
 
         <label><span data-i18n="materialGroup">加工材質</span><select id="material"><option value="" data-i18n="allMaterials">全部材質</option></select></label>
-        <label><span data-i18n="operationGroup">加工方式</span><select id="operation"><option value="" data-i18n="allOperations">全部方式</option></select></label>
+        <label id="materialDetailField" hidden><span data-i18n="materialDetail">牌號／硬度細分</span><select id="materialDetail"><option value="" data-i18n="allDetails">全部細分</option></select></label>
+        <label><span data-i18n="operationGroup">加工類型</span><select id="operation"><option value="" data-i18n="allOperations">全部類型</option></select></label>
+        <label id="stageField" hidden><span data-i18n="stage">加工程度</span><select id="stage"><option value="" data-i18n="allStages">全部程度</option></select></label>
+        <label id="strategyField" hidden><span data-i18n="strategy">加工策略</span><select id="strategy"><option value="" data-i18n="allStrategies">全部策略</option></select></label>
         <div class="field-pair"><label><span id="diameterLabel">刀具外徑 mm</span><input id="diameter" type="number" min="0.01" step="0.01" data-placeholder="optional" placeholder="選填"></label><label><span data-i18n="cutLength">所需刃長 mm</span><input id="cutLength" type="number" min="0" step="0.1" data-placeholder="optional" placeholder="選填"></label></div>
         <label><span data-i18n="maxRpm">機台最高轉速 RPM</span><input id="maxRpm" type="number" min="1" step="100" data-placeholder="optionalRecalc" placeholder="選填；會同步重算 F"></label>
 
