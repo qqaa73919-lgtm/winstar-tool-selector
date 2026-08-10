@@ -2,194 +2,58 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#075aaa">
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="icon" type="image/png" sizes="192x192" href="./data/icon-192.png">
-  <link rel="apple-touch-icon" href="./data/apple-touch-icon.png">
-  <title>WINSTAR 選刀系統 V4</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#063b68">
+  <title>WINSTAR V4 選刀與加工參數系統</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="data/icon-192.png">
+  <link rel="apple-touch-icon" href="data/apple-touch-icon.png">
   <link rel="stylesheet" href="assets/app.css">
-
-
-
 </head>
 <body>
   <header class="topbar">
-    <div>
-      <div class="eyebrow">萬事達五大產品入口・官方資料</div>
-      <h1>WINSTAR 官方選刀系統 <span>V4.2 五大類分類校正版</span></h1>
-      <p>上方可跨五大類反查刀號；下方依加工條件選擇刀具，結果直接依符合程度排名。</p>
-    </div>
-    <div class="header-actions">
-      <div class="data-status" id="dataStatus">資料載入中…</div>
-      <a class="btn ghost" href="https://www.winstarcutting.com.tw/downloads" target="_blank" rel="noopener">萬事達官網</a>
-    </div>
-  </header><div class="portable-note"><strong>GitHub Pages 網頁上傳版：</strong>網頁會自動讀取 data 資料夾；電腦更新並發布後，手機重新整理即可同步。</div>
-  <div class="update-reminder" id="updateReminder" hidden>
-    <div><strong>官方資料檢查提醒</strong><p id="updateReminderText"></p></div>
-    <div class="update-actions">
-      <a class="btn secondary" href="https://www.winstarcutting.com.tw/downloads" target="_blank" rel="noopener">查看官方下載</a>
-      <button class="btn ghost" id="snoozeUpdate">7 天後提醒</button>
-    </div>
-  </div>
+    <div class="brand"><span class="brand-mark">WINSTAR</span><div><h1>V4 選刀與加工參數系統</h1><p>同一刀號可保留多筆材質 × 加工方式 × 對應參數</p></div></div>
+    <div class="version" id="versionText">資料載入中</div>
+  </header>
 
-  <section class="global-lookup" aria-labelledby="globalLookupTitle">
-    <div class="global-lookup-head">
-      <div><h2 id="globalLookupTitle">全類別刀號反查</h2><p>搜尋捨棄式銑刀、整體式銑刀、孔加工、車削與螺紋刀具的完整刀號、部分刀號或系列。</p></div>
-      <div class="global-search-meta" id="globalSearchMeta">官方編碼索引載入中…</div>
-    </div>
-    <div class="global-search-row">
-      <input id="globalReverseCode" type="search" autocomplete="off" placeholder="例如 DMC5、DPC30930030UX、CNMG、ETM">
-      <button class="btn" id="globalReverseBtn">搜尋全部刀具</button>
-    </div>
-  </section>
-  <section class="global-results" id="globalReverseResults" hidden aria-live="polite"></section>
+  <main>
+    <section class="lookup card">
+      <div><span class="eyebrow">最快檢查方式</span><h2>刀號反查</h2><p>輸入完整或部分刀號，選取後直接顯示該刀號的所有加工情境。</p></div>
+      <div class="lookup-row"><input id="reverseInput" type="search" placeholder="例如：E514VD412、ETSN、CCGW" autocomplete="off"><button id="reverseButton">反查刀號</button></div>
+      <div id="reverseResults" class="lookup-results" hidden></div>
+    </section>
 
-  <section class="product-hub">
-    <div class="hub-head"><div><h2>五大產品系統</h2><p>先選擇類別，才會顯示該類的加工條件；切換類別時上一個表單會完全收起。</p></div><small>選取後以藍色顯示</small></div>
-    <div class="category-grid" role="tablist" aria-label="產品類別">
-      <button class="category-card" data-category="solid" aria-selected="false"><strong>整體式銑刀</strong><span>5,450 支實際刀號</span></button>
-      <button class="category-card" data-category="solid_drill" aria-selected="false"><strong>整體式鎢鋼鑽</strong><span>依孔徑、孔深與冷卻方式選擇</span></button>
-      <button class="category-card" data-category="step_drill" aria-selected="false"><strong>整體式鎢鋼階梯鑽</strong><span>官方標準刀號與完整規格</span></button>
-      <button class="category-card" data-category="holemaking" aria-selected="false"><strong>孔加工</strong><span>定位、鉸孔、模組化與捨棄式鑽孔</span></button>
-      <button class="category-card" data-category="threading" aria-selected="false"><strong>螺紋刀具</strong><span>Pitch、牙型與實際編碼</span></button>
-    </div>
-    <details class="recent-products">
-      <summary>近期官方產品追蹤（點此展開）</summary>
-      <div class="recent-grid">
-        <div class="recent-card"><b>DTS90</b><span>孔加工刀具・近期產品</span><a href="https://www.winstarcutting.com.tw/archives/5494" target="_blank" rel="noopener">查看官方頁面</a></div>
-        <div class="recent-card"><b>CXAN</b><span>捨棄式銑刀・近期產品</span><a href="https://www.winstarcutting.com.tw/archives/5492" target="_blank" rel="noopener">查看官方頁面</a></div>
-        <div class="recent-card"><b>ZONES 階梯鑽</b><span>孔加工刀具・2026-07-14</span><a href="https://www.winstarcutting.com.tw/archives/5477" target="_blank" rel="noopener">查看官方頁面</a></div>
-        <div class="recent-card"><b>H65X EHBUC</b><span>整體式銑刀・2026-06-10</span><a href="https://www.winstarcutting.com.tw/archives/5457" target="_blank" rel="noopener">查看官方頁面</a></div>
-        <div class="recent-card"><b>G55CX／H60X 5F</b><span>整體式銑刀・2026-05-19</span><a href="https://www.winstarcutting.com.tw/archives/5442" target="_blank" rel="noopener">查看官方頁面</a></div>
-      </div>
-    </details>
-  </section>
-  <section class="category-notice" id="categoryNotice" hidden></section>
+    <section class="logic card">
+      <div><span class="logic-number">1</span><b>一個實體刀號</b></div><span>→</span>
+      <div><span class="logic-number">N</span><b>多筆加工情境</b><small>材質 × 加工方式</small></div><span>→</span>
+      <div><span class="logic-number">✓</span><b>各自對應參數</b><small>Vc、進給、RPM、F、Ap、Ae</small></div>
+    </section>
 
-  <main class="layout" id="selectorLayout" hidden>
-    <aside class="panel filters">
-      <div class="mode-panel" id="selectMode">
-      <div class="section-title">
-        <div>
-          <span class="step">01</span>
-          <h2>加工需求</h2>
-        </div>
-        <button class="text-btn" id="resetBtn">清除</button>
-      </div>
+    <section class="categories">
+      <div class="section-head"><div><span class="eyebrow">官方五大分類</span><h2>選擇產品分類</h2></div><button id="backCategory" class="text-button" hidden>返回五大分類</button></div>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
 
-      <div class="field full">
-        <label>刀具品牌</label>
-        <div class="brand-lock"><strong>萬事達 WINSTAR</strong><span>官方資料庫</span></div>
-      </div>
-
-      <div class="field-grid">
-        <div class="field">
-          <label for="material"><span class="required-mark">＊</span>加工材質</label>
-          <select id="material"><option value="">請選擇材質</option></select>
-        </div>
-        <div class="field">
-          <label for="materialGrade">材料牌號 <small>選填</small></label>
-          <select id="materialGrade" disabled><option value="">請先選擇加工材質</option></select>
-          <input class="custom-grade" id="materialGradeCustom" type="text" placeholder="輸入實際材料牌號" hidden>
-        </div>
-        <div class="field">
-          <label for="diameter"><span class="required-mark">＊</span>刀徑 D（mm）</label>
-          <input id="diameter" type="number" min="0.01" step="0.01" placeholder="例：10">
-        </div>
-        <div class="field">
-          <label for="maxRpm">機台最高轉速（rpm） <small>選填</small></label>
-          <input id="maxRpm" type="number" min="1" step="100" placeholder="例：12000">
-        </div>
-        <div class="field">
-          <label for="operation">加工方式 <small>選填</small></label>
-          <select id="operation">
-            <option value="any">不限</option>
-            <option value="side">側銑</option>
-            <option value="slot">開槽／全槽</option>
-            <option value="rough">粗加工</option>
-            <option value="finish">精加工</option>
-            <option value="contour">曲面／輪廓</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="toolType">刀具類型 <small>選填</small></label>
-          <select id="toolType"><option value="">不限</option></select>
-        </div>
-        <div class="field">
-          <label for="depth">所需最小刃長 CL（mm） <small>選填</small></label>
-          <input id="depth" type="number" min="0" step="0.1" placeholder="例：15">
-          <p class="field-help">只保留刃長 CL 大於或等於此數值的刀具，不代表 AP。</p>
-        </div>
-        <div class="field">
-          <label for="flutes">指定刃數 <small>選填</small></label>
-          <select id="flutes"><option value="">不限刃數</option></select>
-        </div>
-        <p class="material-note">材料牌號用來記錄實際工件；官方未分牌號提供數據時，仍依上方加工材質的大類條件選刀。</p>
-      </div>
-      <div class="field conditional-field" id="hardnessField" hidden>
-        <label for="hardness">加工硬度 HRC <small>選填，僅預硬鋼／高硬度鋼</small></label>
-        <input id="hardness" type="number" min="0" max="75" step="1" placeholder="例：55">
-      </div>
-      <details class="advanced">
-        <summary>進階條件（AP、AE、刀徑模式、系列）</summary>
-        <div class="field-grid">
-          <div class="field emphasized">
-            <label for="ap">AP 軸向切深（mm） <small>選填</small></label>
-            <input id="ap" type="number" min="0" step="0.01" placeholder="例：10">
-          </div>
-          <div class="field emphasized">
-            <label for="ae">AE 徑向切寬（mm） <small>選填</small></label>
-            <input id="ae" type="number" min="0" step="0.01" placeholder="例：1">
-          </div>
-          <div class="field">
-            <label for="diameterMode">刀徑模式 <small>選填</small></label>
-            <select id="diameterMode">
-              <option value="exact">指定刀徑</option>
-              <option value="max">不大於此刀徑</option>
-              <option value="min">不小於此刀徑</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="series">指定系列 <small>選填</small></label>
-            <select id="series"><option value="">不限系列</option></select>
-          </div>
-          <p class="advanced-note">AP、AE 只用於加工量檢核；結果只顯示官方目錄實際提供的 AP／AE，不把內部安全檢核值冒充官方資料。</p>
-        </div>
-      </details>
-      <div class="search-actions">
-        <button class="btn primary search-btn" id="searchBtn">開始選刀</button>
-        <p class="footnote">結果直接依符合程度排列；沒有該材料的官方條件列時，不會拿其他材料資料代替。</p>
-      </div>
-      </div>
-
-      <div class="mode-panel" id="reverseMode" hidden>
-        <div class="mode-intro"><strong>已知刀號，直接查完整官方資料</strong><p>反查與選刀條件完全分開，會列出基本規格、適用材質、加工方式、官方 AP／AE，以及可取得的 Vc、fz、S、F。</p></div>
-        <div class="reverse-box">
-          <div class="reverse-head"><strong>輸入完整或部分刀號</strong><span>獨立查詢</span></div>
-          <div class="reverse-actions">
-            <input id="reverseCode" type="text" autocomplete="off" placeholder="例如 EPSSVB4100000T">
-            <button class="btn secondary" id="reverseBtn">反查刀具</button>
-          </div>
-          <small class="reverse-help">輸入部分刀號會先列出候選；輸入完整刀號會直接展開所有已連結的官方條件。</small>
-        </div>
-      </div>
-    </aside>
-
-    <section class="content">
-      <div class="panel summary" id="summaryPanel">
-        <div class="section-title compact">
-          <div><span class="step">02</span><h2 id="resultHeading">篩選結果</h2></div>
-        </div>
-        <div id="summaryText" class="empty-summary">
-          左側選擇加工條件後按「開始選刀」。
-        </div>
-      </div>
-      <div id="results" class="results"></div>
+    <section id="selector" class="selector" hidden>
+      <aside class="filters card">
+        <div class="section-head"><div><span class="eyebrow" id="categoryCode"></span><h2 id="categoryTitle"></h2></div><button id="resetButton" class="text-button">清除</button></div>
+        <label>刀號關鍵字<input id="toolQuery" type="search" placeholder="完整或部分刀號"></label>
+        <label>系列<select id="series"><option value="">全部系列</option></select></label>
+        <label>可加工材質<select id="material"><option value="">全部材質</option></select></label>
+        <label>加工方式<select id="operation"><option value="">全部方式</option></select></label>
+        <div class="field-pair"><label>刀具外徑 mm<input id="diameter" type="number" min="0.01" step="0.01" placeholder="選填"></label><label>所需刃長 mm<input id="cutLength" type="number" min="0" step="0.1" placeholder="選填"></label></div>
+        <label>機台最高轉速 RPM<input id="maxRpm" type="number" min="1" step="100" placeholder="選填；會同步重算 F"></label>
+        <button id="searchButton" class="primary">查詢刀具與情境</button>
+        <p class="hint">所有條件都可選填。查詢結果會先依刀號合併，再顯示每個刀號底下有幾筆加工情境。</p>
+      </aside>
+      <section class="results-area">
+        <div id="resultSummary" class="result-summary card">請設定條件，或直接按查詢瀏覽本分類。</div>
+        <div id="results" class="results"></div>
+        <button id="loadMore" class="load-more" hidden>顯示更多刀號</button>
+      </section>
     </section>
   </main>
-
-  <button class="back-to-top" id="backToTop" type="button" aria-label="回到頁面最上方">↑<span>回到頂端</span></button>
+  <button id="backTop" class="back-top" aria-label="回到最上方">↑</button>
   <script src="assets/app.js" defer></script>
-<a class="admin-fab" href="manager.html" aria-label="開啟資料管理端">資料管理端</a></body>
+</body>
 </html>

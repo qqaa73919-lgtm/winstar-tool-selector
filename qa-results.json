@@ -1,96 +1,48 @@
 {
-  "generatedAt": "2026-08-05T00:00:00+08:00",
-  "checks": [
+  "status": "PASS",
+  "generatedAt": "2026-08-10T12:25:43+08:00",
+  "totalRows": 197934,
+  "uniqueTools": 39961,
+  "categories": [
     {
-      "name": "版本",
-      "status": "通過",
-      "detail": "4.2.0"
+      "code": "A",
+      "rows": 8081,
+      "columns": 31,
+      "missingVc": 0,
+      "missingFeed": 0,
+      "fileBytes": 2906720
     },
     {
-      "name": "整體式銑刀產品",
-      "status": "通過",
-      "detail": "5450筆"
+      "code": "B",
+      "rows": 38424,
+      "columns": 27,
+      "missingVc": 0,
+      "missingFeed": 0,
+      "fileBytes": 14398356
     },
     {
-      "name": "整體式銑刀參數",
-      "status": "通過",
-      "detail": "1519組"
+      "code": "C",
+      "rows": 25446,
+      "columns": 30,
+      "missingVc": 0,
+      "missingFeed": 0,
+      "fileBytes": 7419635
     },
     {
-      "name": "全目錄索引",
-      "status": "通過",
-      "detail": "3854筆"
+      "code": "D",
+      "rows": 97956,
+      "columns": 96,
+      "missingVc": 0,
+      "missingFeed": 0,
+      "fileBytes": 73719851
     },
     {
-      "name": "整體式鎢鋼鑽分類",
-      "status": "通過",
-      "detail": "1386筆"
-    },
-    {
-      "name": "整體式鎢鋼階梯鑽分類",
-      "status": "通過",
-      "detail": "5筆"
-    },
-    {
-      "name": "孔加工分類",
-      "status": "通過",
-      "detail": "1064筆"
-    },
-    {
-      "name": "螺紋分類",
-      "status": "通過",
-      "detail": "564筆"
-    },
-    {
-      "name": "官方PDF索引定位",
-      "status": "通過",
-      "detail": "3019筆"
-    },
-    {
-      "name": "官方參數頁關聯",
-      "status": "通過",
-      "detail": "2222筆；其餘維持待系列核對"
-    },
-    {
-      "name": "參數來源狀態",
-      "status": "通過",
-      "detail": "每筆均有狀態"
-    },
-    {
-      "name": "換算規則不冒充官方",
-      "status": "通過",
-      "detail": "公式與狀態同時保存"
-    },
-    {
-      "name": "五大類入口",
-      "status": "通過",
-      "detail": "5個入口"
-    },
-    {
-      "name": "回到頂端介面",
-      "status": "通過",
-      "detail": "電腦與手機浮動按鈕"
-    },
-    {
-      "name": "缺值不使用橘色警示",
-      "status": "通過",
-      "detail": "官方空白不警示"
-    },
-    {
-      "name": "分類校正母檔",
-      "status": "通過",
-      "detail": "五大類分頁母檔已納入"
-    },
-    {
-      "name": "管理端母檔連結",
-      "status": "通過",
-      "detail": "連結正確"
-    },
-    {
-      "name": "發布相容",
-      "status": "通過",
-      "detail": "GitHub Pages根目錄檔案存在"
+      "code": "E",
+      "rows": 28027,
+      "columns": 64,
+      "missingVc": 0,
+      "missingFeed": 0,
+      "fileBytes": 19420489
     }
-  ],
-  "failed": 0
+  ]
 }
