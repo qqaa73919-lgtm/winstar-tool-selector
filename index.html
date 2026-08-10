@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#063b68">
+  <meta name="theme-color" content="#073b6f">
   <title>WINSTAR V4 選刀與加工參數系統</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="data/icon-192.png">
@@ -12,47 +12,43 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><span class="brand-mark">WINSTAR</span><div><h1>V4 選刀與加工參數系統</h1><p>同一刀號可保留多筆材質 × 加工方式 × 對應參數</p></div></div>
-    <div class="version" id="versionText">資料載入中</div>
+    <div class="brand"><span class="brand-mark">WINSTAR</span><div><h1 data-i18n="title">V4 選刀與加工參數系統</h1><p data-i18n="subtitle">快速找刀、核對官方加工條件</p></div></div>
+    <nav class="top-actions">
+      <button id="langButton" class="nav-button" type="button">English</button>
+      <a class="nav-button" href="https://www.winstarcutting.com.tw/" target="_blank" rel="noopener" data-i18n="officialSite">WINSTAR 官方網站</a>
+    </nav>
   </header>
 
   <main>
-    <section class="lookup card">
-      <div><span class="eyebrow">最快檢查方式</span><h2>刀號反查</h2><p>輸入完整或部分刀號，選取後直接顯示該刀號的所有加工情境。</p></div>
-      <div class="lookup-row"><input id="reverseInput" type="search" placeholder="例如：E514VD412、ETSN、CCGW" autocomplete="off"><button id="reverseButton">反查刀號</button></div>
-      <div id="reverseResults" class="lookup-results" hidden></div>
+    <section class="category-section">
+      <div class="section-heading"><div><span data-i18n="officialCategories">官方五大分類</span><h2 data-i18n="chooseCategory">選擇產品分類</h2></div><button id="showCategories" class="link-button" hidden data-i18n="backCategories">返回五大分類</button></div>
+      <div id="categoryGrid" class="category-grid"></div>
     </section>
 
-    <section class="logic card">
-      <div><span class="logic-number">1</span><b>一個實體刀號</b></div><span>→</span>
-      <div><span class="logic-number">N</span><b>多筆加工情境</b><small>材質 × 加工方式</small></div><span>→</span>
-      <div><span class="logic-number">✓</span><b>各自對應參數</b><small>Vc、進給、RPM、F、Ap、Ae</small></div>
-    </section>
+    <section id="workspace" class="workspace" hidden>
+      <aside class="filter-panel">
+        <div class="filter-title"><div><small id="categoryCode"></small><h2 id="categoryTitle"></h2></div><button id="resetButton" class="link-button" data-i18n="clear">清除</button></div>
 
-    <section class="categories">
-      <div class="section-head"><div><span class="eyebrow">官方五大分類</span><h2>選擇產品分類</h2></div><button id="backCategory" class="text-button" hidden>返回五大分類</button></div>
-      <div class="category-grid" id="categoryGrid"></div>
-    </section>
+        <label class="search-field"><span data-i18n="toolKeyword">刀號關鍵字</span><div class="input-clear"><input id="toolInput" type="search" autocomplete="off" data-placeholder="toolPlaceholder" placeholder="輸入完整或部分刀號"><button id="clearTool" type="button" aria-label="清除刀號">×</button></div><div id="toolSuggestions" class="suggestions" hidden></div></label>
 
-    <section id="selector" class="selector" hidden>
-      <aside class="filters card">
-        <div class="section-head"><div><span class="eyebrow" id="categoryCode"></span><h2 id="categoryTitle"></h2></div><button id="resetButton" class="text-button">清除</button></div>
-        <label>刀號關鍵字<input id="toolQuery" type="search" placeholder="完整或部分刀號"></label>
-        <label>系列<select id="series"><option value="">全部系列</option></select></label>
-        <label>可加工材質<select id="material"><option value="">全部材質</option></select></label>
-        <label>加工方式<select id="operation"><option value="">全部方式</option></select></label>
-        <div class="field-pair"><label>刀具外徑 mm<input id="diameter" type="number" min="0.01" step="0.01" placeholder="選填"></label><label>所需刃長 mm<input id="cutLength" type="number" min="0" step="0.1" placeholder="選填"></label></div>
-        <label>機台最高轉速 RPM<input id="maxRpm" type="number" min="1" step="100" placeholder="選填；會同步重算 F"></label>
-        <button id="searchButton" class="primary">查詢刀具與情境</button>
-        <p class="hint">所有條件都可選填。查詢結果會先依刀號合併，再顯示每個刀號底下有幾筆加工情境。</p>
+        <label><span data-i18n="materialGroup">加工材質</span><select id="material"><option value="" data-i18n="allMaterials">全部材質</option></select></label>
+        <label><span data-i18n="operationGroup">加工方式</span><select id="operation"><option value="" data-i18n="allOperations">全部方式</option></select></label>
+        <div class="field-pair"><label><span id="diameterLabel">刀具外徑 mm</span><input id="diameter" type="number" min="0.01" step="0.01" data-placeholder="optional" placeholder="選填"></label><label><span data-i18n="cutLength">所需刃長 mm</span><input id="cutLength" type="number" min="0" step="0.1" data-placeholder="optional" placeholder="選填"></label></div>
+        <label><span data-i18n="maxRpm">機台最高轉速 RPM</span><input id="maxRpm" type="number" min="1" step="100" data-placeholder="optionalRecalc" placeholder="選填；會同步重算 F"></label>
+
+        <details class="advanced"><summary data-i18n="moreFilters">更多篩選條件</summary><label><span data-i18n="series">系列</span><select id="series"><option value="" data-i18n="allSeries">全部系列</option></select></label></details>
+        <button id="searchButton" class="primary" data-i18n="searchTools">查詢刀具</button>
+        <p class="filter-help" data-i18n="filterHelp">選單會自動連動，只顯示確實有刀具的組合。</p>
       </aside>
-      <section class="results-area">
-        <div id="resultSummary" class="result-summary card">請設定條件，或直接按查詢瀏覽本分類。</div>
+
+      <section class="result-area">
+        <div id="resultSummary" class="result-summary"></div>
         <div id="results" class="results"></div>
-        <button id="loadMore" class="load-more" hidden>顯示更多刀號</button>
+        <button id="loadMore" class="load-more" hidden data-i18n="showMore">顯示更多刀號</button>
       </section>
     </section>
   </main>
+  <div id="toast" class="toast" role="status" hidden></div>
   <button id="backTop" class="back-top" aria-label="回到最上方">↑</button>
   <script src="assets/app.js" defer></script>
 </body>
