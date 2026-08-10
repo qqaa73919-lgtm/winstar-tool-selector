@@ -19,6 +19,6 @@
 
 把本資料夾內全部內容上傳並覆蓋 GitHub Pages 網站根目錄。請勿只上傳 `index.html`；`assets` 與 `data` 也必須一起更新。
 
-D 類原始 JSON 超過 GitHub 網頁上傳的 25MB 限制，因此網站改讀 `data/categories/D-1.json`～`D-4.json`。這只是發布拆檔，97,956 筆正式資料沒有刪除或重做。
+D、E 類改用小型發布檔：D 為 `D-01.json`～`D-10.json`，E 為 `E-01.json`～`E-04.json`。每份約 5～7MB，這只是發布拆檔，正式資料沒有刪除或重做。
 
 本機檢查時請透過網站伺服器開啟，不要直接雙擊 `index.html`，否則瀏覽器可能阻止讀取 JSON。
