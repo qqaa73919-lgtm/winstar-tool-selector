@@ -18,6 +18,7 @@
       <a class="nav-button" href="https://www.winstarcutting.com.tw/" target="_blank" rel="noopener" data-i18n="officialSite">WINSTAR 官方網站</a>
     </nav>
   </header>
+  <div class="version-strip"><span id="dataVersion">資料版本：—</span><span data-i18n="programVersion">程式版本：2026-08-11</span></div>
 
   <main>
     <section class="category-section">
@@ -34,9 +35,11 @@
         <label><span data-i18n="materialGroup">加工材料</span><select id="material"><option value="" data-i18n="allMaterials">全部材料</option></select></label>
         <label id="gradeField" hidden><span data-i18n="grade">材料牌號</span><select id="grade"><option value="" data-i18n="allGrades">全部牌號</option></select></label>
         <label id="hardnessField" hidden><span data-i18n="hardness">硬度</span><select id="hardness"><option value="" data-i18n="allHardness">全部硬度</option></select></label>
-        <label><span data-i18n="operationGroup">加工方式</span><select id="operation"><option value="" data-i18n="allOperations">全部方式</option></select></label>
-        <div class="field-pair"><label><span id="diameterLabel">刀具外徑</span><div class="input-unit"><input id="diameter" type="number" min="0.01" step="0.01" data-placeholder="optional" placeholder="選填"><em>mm</em></div></label><label id="lengthField"><span id="lengthLabel" data-i18n="cutLength">所需刃長</span><div class="input-unit"><input id="cutLength" type="number" min="0" step="0.1" data-placeholder="optional" placeholder="選填"><em>mm</em></div></label></div>
+        <label id="toolTypeField" hidden><span data-i18n="toolType">刀型</span><select id="toolType"><option value="" data-i18n="allToolTypes">全部刀型</option></select></label>
+        <label id="operationField" hidden><span data-i18n="operationGroup">加工方式</span><select id="operation"><option value="" data-i18n="allOperations">全部方式</option></select></label>
+        <div class="field-pair"><label id="diameterField"><span id="diameterLabel">刀具外徑</span><select id="diameterSelect"><option value="" data-i18n="allDiameters">全部外徑</option></select></label><label id="lengthField" hidden><span id="lengthLabel" data-i18n="cutLength">可用刃長</span><select id="cutLength"><option value="" data-i18n="allLengths">全部長度</option></select></label></div>
         <label id="flutesField" hidden><span data-i18n="flutes">刃數</span><select id="flutes"><option value="" data-i18n="allFlutes">全部刃數</option></select></label>
+        <label id="workDiameterField" hidden><span data-i18n="diameterWork">工件加工直徑</span><div class="input-unit"><input id="diameter" type="number" min="0.01" step="0.01" data-placeholder="optional" placeholder="選填"><em>mm</em></div></label>
         <label><span data-i18n="maxRpm">機台最高轉速 RPM</span><input id="maxRpm" type="number" min="1" step="100" data-placeholder="optionalRecalc" placeholder="選填；會同步重算 F"></label>
 
         <details class="advanced"><summary data-i18n="moreFilters">更多篩選條件</summary><label id="strategyField" hidden><span data-i18n="strategy">加工策略</span><select id="strategy"><option value="" data-i18n="allStrategies">全部策略</option></select></label><label><span data-i18n="series">系列</span><select id="series"><option value="" data-i18n="allSeries">全部系列</option></select></label></details>
