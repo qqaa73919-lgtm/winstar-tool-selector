@@ -116,5 +116,6 @@ main{padding-inline:11px}
 .filter-panel label[hidden]{display:none}
 .filter-panel{padding:18px}
 .filter-panel label{margin-top:11px}
+.version-strip{display:flex;justify-content:flex-end;gap:16px;padding:6px max(22px,calc((100% - 1420px)/2));border-bottom:1px solid #c7dbea;background:#f7fbfe;color:#5c7388;font-size:11px}
 
 
